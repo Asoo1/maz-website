@@ -942,11 +942,13 @@
       </div>
     </div>
 
-    <form class="form-card" onsubmit="return handleSubmit(event)">
+    <form class="form-card" action="https://api.web3forms.com/submit" method="POST">
+      <!-- Web3Forms Access Key -->
+      <input type="hidden" name="access_key" value="41f497d6-2507-48b0-b839-f81eecb4c2df">
+
       <div class="form-title mono">طلب استشارة</div>
       <div class="form-row">
         <div class="field">
-          <input type="hidden" name="access_key" value="41f497d6-2507-48b0-b839-f81eecb4c2df">
           <label for="name">الاسم الكامل</label>
           <input id="name" name="name" type="text" placeholder="اسمك" required>
         </div>
@@ -961,17 +963,17 @@
           <input id="email" name="email" type="email" placeholder="example@email.com" required>
         </div>
         <div class="field">
-  <label for="service">نوع الخدمة</label>
-  <select id="service" name="service" required>
-    <option value="" disabled selected hidden>اختر الخدمة...</option>
-    <option value="استشارات إدارية">استشارات إدارية</option>
-    <option value="التصميم المعماري">التصميم المعماري</option>
-    <option value="الإشراف الهندسي">الإشراف الهندسي</option>
-    <option value="التصميم المدني والإنشائي">التصميم المدني والإنشائي</option>
-    <option value="الهندسة الكهربائية">الهندسة الكهربائية</option>
-    <option value="الهندسة الميكانيكية">الهندسة الميكانيكية</option>
-  </select>
-</div>
+          <label for="service">نوع الخدمة</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected hidden>اختر الخدمة...</option>
+            <option value="استشارات إدارية">استشارات إدارية</option>
+            <option value="التصميم المعماري">التصميم المعماري</option>
+            <option value="الإشراف الهندسي">الإشراف الهندسي</option>
+            <option value="التصميم المدني والإنشائي">التصميم المدني والإنشائي</option>
+            <option value="الهندسة الكهربائية">الهندسة الكهربائية</option>
+            <option value="الهندسة الميكانيكية">الهندسة الميكانيكية</option>
+          </select>
+        </div>
       </div>
       <div class="form-row">
         <div class="field full">
@@ -983,7 +985,7 @@
       <div class="form-note" id="formNote">سيتم التواصل معك خلال يومي عمل من فريقنا الهندسي.</div>
     </form>
   </div>
-</section>
+</section>  
 
 <footer>
   <div class="wrap foot-inner">
