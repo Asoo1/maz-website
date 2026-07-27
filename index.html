@@ -937,12 +937,12 @@
       <div class="contact-list">
         <div class="row"><span class="k mono">الهاتف</span><span class="v">00966114915733</span></div>
         <div class="row"><span class="k mono">البريد</span><span class="v">info@mazengineering.com</span></div>
-        <div class="row"><span class="k mono">الموقع</span><span class="v">Tarim Tower, شارع العليا، العليا، الرياض 12221</span></div>
+        <div class="row"><span class="k mono">الموقع</span><span class="v">Tarim Tower، شارع العليا، العليا، الرياض 12221</span></div>
         <div class="row"><span class="k mono">الدوام</span><span class="v">الأحد – الخميس، 8 صباحاً – 5 مساءً</span></div>
       </div>
     </div>
 
-    <form class="form-card" action="https://api.web3forms.com/submit" method="POST">
+    <form class="form-card" id="contactForm">
       <!-- Web3Forms Access Key -->
       <input type="hidden" name="access_key" value="41f497d6-2507-48b0-b839-f81eecb4c2df">
 
@@ -981,11 +981,59 @@
           <textarea id="message" name="message" placeholder="اكتب نبذة مختصرة عن مشروعك واحتياجك الهندسي..."></textarea>
         </div>
       </div>
-      <button type="submit" class="submit-btn">إرسال طلب الاستشارة</button>
+      <button type="submit" class="submit-btn" id="submitBtn">إرسال طلب الاستشارة</button>
       <div class="form-note" id="formNote">سيتم التواصل معك خلال يومي عمل من فريقنا الهندسي.</div>
     </form>
   </div>
-</section>  
+</section>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const formNote = document.getElementById('formNote');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // تغيير حالة الزر أثناء الإرسال
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'جاري الإرسال...';
+    formNote.style.color = '#888';
+    formNote.textContent = 'جاري إرسال طلبك...';
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: json
+    })
+    .then(async (response) => {
+      let json = await response.json();
+      if (response.status == 200) {
+        formNote.style.color = '#2e7d32'; // لون أخضر للنجاح
+        formNote.textContent = '✓ تم إرسال طلبك بنجاح! سيتم التواصل معك قريباً.';
+        form.reset(); // تفريغ الخانات
+      } else {
+        formNote.style.color = '#d32f2f'; // لون أحمر عند وجود خطأ
+        formNote.textContent = json.message || 'حدث خطأ أثناء الإرسال، يرجى المحاولة لاحقاً.';
+      }
+    })
+    .catch(error => {
+      formNote.style.color = '#d32f2f';
+      formNote.textContent = 'حدث خطأ في الاتصال، يرجى إعادة المحاولة.';
+    })
+    .then(function() {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'إرسال طلب الاستشارة';
+    });
+  });
+</script>
 
 <footer>
   <div class="wrap foot-inner">
