@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ماز الهندسية | MAZ Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<head>
+  <!-- رابط Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<style>
+  :root{
+    --bg:#F6F4EE;
+    --bg-alt:#EFECE3;
+    --ink:#201C46;
+    --ink-2:#3D3775;
+    --steel:#9A9BAD;
+    --steel-light:#DAD9E2;
+    --bronze:#AD8A52;
+    --bronze-dark:#8C6D3B;
+    --line:#D9D5C9;
+    --paper:#FFFFFF;
+    --scc:green;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans Arabic', sans-serif;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  /* ---------- utility ---------- */
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:25px;
+    letter-spacing:.14em;
+    color:var(--bronze-dark);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:28px;height:1px;
+    background:var(--bronze);
+    display:inline-block;
+  }
+  .section-title{
+    font-size:clamp(28px,4vw,42px);
+    font-weight:700;
+    color:var(--ink);
+    letter-spacing:-.01em;
+  }
+  section{position:relative;}
+
+  /* dimension-line divider, like an engineering drawing measurement */
+  .dim-divider{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:var(--steel);
+    margin:0 auto;
+    max-width:1180px;
+    padding:0 32px;
+  }
+  .dim-divider .tick{width:1px;height:10px;background:var(--line);}
+  .dim-divider .rule{flex:1;height:1px;background:var(--line);}
+  .dim-divider .label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--steel);
+    white-space:nowrap;
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    background:rgba(246,244,238,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    max-width:1180px;
+    margin:0 auto;
+    padding:14px 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .brand img{height:90px;width:auto;}
+  .nav-links{
+    display:flex;
+    gap:34px;
+    font-size:18.5px;
+    font-weight:500;
+  }
+  .nav-links a{
+    position:relative;
+    color:var(--ink-2);
+    padding:4px 0;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--bronze-dark);}
+  .nav-cta{
+    font-size:17px;
+    font-weight:600;
+    color:var(--paper);
+    background:var(--ink);
+    padding:10px 22px;
+    border-radius:2px;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--ink-2);}
+  .nav-toggle{display:none;}
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .nav-toggle{
+      display:block;
+      font-family:'IBM Plex Mono';
+      font-size:13px;
+      border:1px solid var(--line);
+      background:none;
+      padding:8px 14px;
+      color:var(--ink);
+    }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:168px 0 120px;
+    position:relative;
+    overflow:hidden;
+  }
+  .fan-bg{
+    position:absolute;
+    top:-10%;
+    left:50%;
+    transform:translateX(-50%);
+    width:1400px;
+    max-width:none;
+    opacity:.5;
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:60px;
+    align-items:end;
+  }
+  .hero h1{
+    font-size:clamp(38px,5.4vw,64px);
+    font-weight:700;
+    color:var(--ink);
+    letter-spacing:-.015em;
+    line-height:1.18;
+  }
+  .hero h1 span{color:var(--bronze-dark);}
+  .hero p.lead{
+    margin-top:26px;
+    font-size:18px;
+    color:var(--ink-2);
+    max-width:52ch;
+  }
+  .hero-actions{
+    margin-top:38px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-weight:600;
+    font-size:15px;
+    padding:14px 26px;
+    border-radius:2px;
+    transition:all .2s;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-primary:hover{background:var(--bronze-dark);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper);}
+
+  .hero-meta{
+    border-right:1px solid var(--line);
+    padding-right:28px;
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .hero-meta .stat{display:flex;flex-direction:column;}
+  .hero-meta .stat .num{
+    font-family:'IBM Plex Mono';
+    font-size:26px;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .hero-meta .stat .cap{
+    font-size:13px;
+    color:var(--steel);
+    margin-top:2px;
+  }
+
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-meta{border-right:none;border-top:1px solid var(--line);padding-right:0;padding-top:24px;flex-direction:row;justify-content:space-between;}
+  }
+
+  /* ---------- about ---------- */
+  .about{padding:110px 0;}
+  .about-grid{
+    display:grid;
+    grid-template-columns:.9fr 1.1fr;
+    gap:70px;
+    margin-top:40px;
+    align-items:start;
+  }
+  .about-grid p{
+    color:var(--ink-2);
+    font-size:16.5px;
+    margin-bottom:18px;
+  }
+  .about-figures{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .about-figures .fig{
+    background:var(--paper);
+    padding:26px 22px;
+  }
+  .about-figures .fig .num{
+    font-family:'IBM Plex Mono';
+    font-size:30px;
+    color:var(--bronze-dark);
+    font-weight:500;
+  }
+  .about-figures .fig .cap{
+    font-size:13.5px;
+    color:var(--steel);
+    margin-top:6px;
+  }
+  @media (max-width:860px){.about-grid{grid-template-columns:1fr;}}
+
+  /* ---------- vision/strategy/goals ---------- */
+  .vsg{padding:110px 0;background:var(--bg-alt);}
+  .vsg-head{max-width:640px;}
+  .vsg-head p{color:var(--ink-2);margin-top:18px;font-size:16.5px;}
+  .vsg-grid{
+    margin-top:56px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);
+    border-right:1px solid var(--line);
+  }
+  .vsg-card{
+    border-left:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:36px 30px;
+    background:var(--bg-alt);
+    transition:background .2s;
+  }
+  .vsg-card:hover{background:var(--paper);}
+  .vsg-card .tag{
+    font-family:'IBM Plex Mono';
+    font-size:11.5px;
+    letter-spacing:.1em;
+    color:var(--steel);
+  }
+  .vsg-card h3{
+    font-size:21px;
+    margin-top:14px;
+    color:var(--ink);
+    font-weight:700;
+  }
+  .vsg-card p{
+    margin-top:14px;
+    font-size:15px;
+    color:var(--ink-2);
+  }
+  .vsg-card ul{
+    margin-top:14px;
+    padding-right:18px;
+    font-size:14.5px;
+    color:var(--ink-2);
+  }
+  .vsg-card ul li{margin-bottom:8px;}
+  @media (max-width:860px){.vsg-grid{grid-template-columns:1fr;}}
+
+  /* ---------- services ---------- */
+  .services{padding:110px 0;}
+  .services-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    flex-wrap:wrap;
+  }
+  .services-head p{
+    color:var(--ink-2);
+    max-width:38ch;
+    font-size:15.5px;
+  }
+  .services-grid{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--paper);
+    padding:34px 28px;
+    position:relative;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .service-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 34px -20px rgba(32,28,70,.28);
+    z-index:2;
+  }
+  .service-card .idx{
+    font-family:'IBM Plex Mono';
+    font-size:12px;
+    color:var(--bronze);
+  }
+  .service-card h3{
+    margin-top:16px;
+    font-size:19px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .service-card p{
+    margin-top:12px;
+    font-size:14.5px;
+    color:var(--ink-2);
+  }
+  @media (max-width:860px){.services-grid{grid-template-columns:1fr;}}
+
+  /* ---------- projects ---------- */
+  .projects{padding:110px 0;background:var(--bg-alt);}
+  .projects-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:30px;
+    flex-wrap:wrap;
+  }
+  .projects-head p{
+    color:var(--ink-2);
+    max-width:38ch;
+    font-size:15.5px;
+  }
+  .projects-grid{
+    margin-top:50px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .project-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:2px;
+    overflow:hidden;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .project-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 34px -20px rgba(32,28,70,.28);
+  }
+  .project-thumb{
+    position:relative;
+    height:180px;
+    background:linear-gradient(135deg,var(--ink) 0%,var(--ink-2) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .project-thumb svg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    opacity:.35;
+  }
+  .project-thumb .project-num{
+    font-family:'IBM Plex Mono';
+    font-size:42px;
+    color:rgba(255,255,255,.5);
+    position:relative;
+    z-index:1;
+  }
+  .project-tag{
+    position:absolute;
+    top:14px;
+    inset-inline-start:14px;
+    background:var(--bronze);
+    color:#fff;
+    font-family:'IBM Plex Mono';
+    font-size:11px;
+    letter-spacing:.06em;
+    padding:5px 12px;
+    border-radius:2px;
+    z-index:2;
+  }
+  .project-body{padding:22px 24px 26px;}
+  .project-body .meta{
+    font-family:'IBM Plex Mono';
+    font-size:12px;
+    color:var(--steel);
+    letter-spacing:.04em;
+  }
+  .project-body h3{
+    margin-top:10px;
+    font-size:19px;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .project-body p{
+    margin-top:10px;
+    font-size:14.5px;
+    color:var(--ink-2);
+  }
+  @media (max-width:860px){.projects-grid{grid-template-columns:1fr;}}
+
+  /* ---------- contact ---------- */
+  .contact{padding:110px 0 130px;background:var(--ink);color:var(--bg);position:relative;overflow:hidden;}
+  .contact .fan-bg{opacity:.10;filter:brightness(4);}
+  .contact-grid{
+    position:relative;z-index:2;
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:70px;
+  }
+  .contact-info .eyebrow{color:var(--bronze);}
+  .contact-info .eyebrow::before{background:var(--bronze);}
+  .contact-info h2{
+    font-size:clamp(28px,4vw,40px);
+    font-weight:700;
+    color:var(--paper);
+  }
+  .contact-info p{margin-top:18px;color:var(--steel-light);font-size:15.5px;max-width:40ch;}
+  .contact-list{margin-top:34px;display:flex;flex-direction:column;gap:16px;}
+  .contact-list .row{display:flex;gap:14px;align-items:flex-start;font-size:15px;}
+  .contact-list .row .k{
+    font-family:'IBM Plex Mono';
+    font-size:11.5px;
+    color:var(--bronze);
+    letter-spacing:.08em;
+    min-width:70px;
+    padding-top:2px;
+  }
+  .contact-list .row .v{color:var(--bg);}
+
+  .form-card{
+    background:var(--bg);
+    color:var(--ink);
+    padding:40px;
+    border-radius:2px;
+  }
+  .form-card .form-title{
+    font-size:20px;
+    font-family:'arial';
+    letter-spacing:.1em;
+    color:var(--steel);
+    margin-bottom:24px;
+  }
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:13px;font-weight:600;color:var(--ink-2);}
+  .field input,.field select,.field textarea{
+    border:1px solid var(--line);
+    background:var(--paper);
+    padding:12px 14px;
+    font-size:14.5px;
+    font-family:inherit;
+    color:var(--ink);
+    border-radius:2px;
+    outline:none;
+    transition:border-color .2s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--bronze);}
+  .field textarea{resize:vertical;min-height:96px;}
+  .submit-btn{
+    width:100%;
+    margin-top:6px;
+    background:var(--ink);
+    color:var(--paper);
+    font-weight:600;
+    font-size:15px;
+    padding:15px;
+    border:none;
+    border-radius:2px;
+    cursor:pointer;
+    transition:background .2s;
+  }
+  .submit-btn:hover{background:var(--bronze-dark);}
+  .form-note{margin-top:14px;font-size:12.5px;color:var(--steel);}
+  @media (max-width:860px){
+    .contact-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink);
+    color:var(--steel-light);
+    border-top:1px solid rgba(255,255,255,.1);
+    padding:26px 0;
+    font-size:13px;
+  }
+  .foot-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  /* focus visibility for a11y */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible{
+    outline:2px solid var(--bronze);
+    outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important; scroll-behavior:auto !important;}
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+/* تكبير أيقونة Font Awesome */
+.service-card i.service-icon,
+.service-card .fa-building,
+.service-card i {
+    font-size: 2.8rem !important; /* تكبير الحجم بشكل ممتاز واضحة ومقروءة */
+    display: block !important;    /* لتعمل كعنصر مستقل وتفصل بين الرقم والعنوان */
+    margin-top: 15px;             /* مسافة فوقية من الرقم */
+    margin-bottom: 20px;          /* مسافة تحتية قبل العنوان */
+    margin: 15px auto;
+    color: #1a233a;               /* لون كحلي متناسق مع الخط (أو استبدليه بلون هويتك) */
+}
+
+/* حركة بسيطة للـ Hover عند تحريك الماوس على الكارد */
+.service-card:hover .service-icon {
+  transform: translateY(-3px); /* ترتفع الأيقونة قليلاً للأعلى */
+  color: #1a1a1a;              /* يتغير لونها للداكن مثلاً */
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">
+      <img src="https://mazeng.sa/wp-content/uploads/2022/01/cropped-Maz-Engineering_Logo_HiRes-removebg-300x100.png" alt="MAZ Engineering Logo">
+    </a>
+    <nav class="nav-links">
+      <a href="#about">نبذة عنا</a>
+      <a href="#vision">رؤيتنا وأهدافنا</a>
+      <a href="#services">خدماتنا</a>
+      <a href="#projects">مشاريعنا</a>
+      <a href="#contact">تواصل معنا</a>
+    </nav>
+    <a class="nav-cta" href="#contact">اطلب استشارة</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="top" class="hero">
+  <svg class="fan-bg" viewBox="0 0 1400 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="#9A9BAD" stroke-width="1">
+      <!-- radiating fan lines echoing the brand mark -->
+      <line x1="700" y1="700" x2="120" y2="40"/>
+      <line x1="700" y1="700" x2="220" y2="30"/>
+      <line x1="700" y1="700" x2="320" y2="20"/>
+      <line x1="700" y1="700" x2="420" y2="14"/>
+      <line x1="700" y1="700" x2="520" y2="8"/>
+      <line x1="700" y1="700" x2="620" y2="4"/>
+      <line x1="700" y1="700" x2="700" y2="0"/>
+      <line x1="700" y1="700" x2="780" y2="4"/>
+      <line x1="700" y1="700" x2="880" y2="8"/>
+      <line x1="700" y1="700" x2="980" y2="14"/>
+      <line x1="700" y1="700" x2="1080" y2="20"/>
+      <line x1="700" y1="700" x2="1180" y2="30"/>
+      <line x1="700" y1="700" x2="1280" y2="40"/>
+    </g>
+  </svg>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">مكتب استشارات هندسية</div>
+      <h1>حلول هندسية دقيقة،<br>من <span>الفكرة</span> إلى الإنجاز</h1>
+      <p class="lead">مكتب ماز الهندسية يرافق عملاءه من مالكي المشاريع والمطورين عبر مراحل التصميم والإشراف والتنفيذ، بمنهجية فنية صارمة ومعايير جودة عالية.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">اطلب استشارة الآن</a>
+        <a href="#services" class="btn btn-ghost">تعرف على خدماتنا</a>
+      </div>
+    </div>
+    <div class="hero-meta">
+      <div class="stat">
+        <span class="num mono">+500</span>
+        <span class="cap">مشروع هندسي منفَّذ</span>
+      </div>
+      <div class="stat">
+        <span class="num mono">15</span>
+        <span class="cap">عاماً من الخبرة التراكمية</span>
+      </div>
+      <div class="stat">
+        <span class="num mono">98%</span>
+        <span class="cap">نسبة رضا العملاء</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dim-divider mono"><span class="tick"></span><span class="rule"></span><span class="label">01 — نبذة عنا</span><span class="rule"></span><span class="tick"></span></div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about" class="about reveal">
+  <div class="wrap">
+    <div class="eyebrow">من نحن</div>
+    <h2 class="section-title">نبذة تعريفية عن المكتب</h2>
+    <div class="about-grid">
+      <div>
+        <p>مكتب ماز الهندسية مكتب استشارات هندسية متكامل، يقدّم خدماته لقطاعي التطوير العقاري والإنشاءات من خلال فريق من المهندسين المتخصصين في التصميم الإنشائي والمعماري وإدارة المشاريع.</p>
+        <p>نؤمن بأن الهندسة الجيدة تبدأ بفهم دقيق لاحتياج العميل، ولذلك نحرص على العمل بشفافية ومنهجية واضحة في كل مرحلة، من الدراسة الأولية وحتى التسليم النهائي للمشروع.</p>
+        <p>يجمع المكتب بين الخبرة الفنية العميقة والالتزام بأحدث الأكواد والمعايير الهندسية المحلية والعالمية، لضمان مخرجات آمنة وقابلة للتنفيذ واقتصادية في آن واحد.</p>
+      </div>
+      <div class="about-figures">
+        <div class="fig"><div class="num mono">2009</div><div class="cap">تأسيس المكتب</div></div>
+        <div class="fig"><div class="num mono">9+</div><div class="cap">مهندس ومستشار</div></div>
+        <div class="fig"><div class="num mono">6</div><div class="cap">تخصصات هندسية</div></div>
+        <div class="fig"><div class="num mono">24/7</div><div class="cap">متابعة فنية للمشاريع</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VISION / STRATEGY / GOALS ===== -->
+<section id="vision" class="vsg reveal">
+  <div class="wrap">
+    <div class="vsg-head">
+      <div class="eyebrow">توجهنا</div>
+      <h2 class="section-title">رؤيتنا ورسالتنا وأهدافنا</h2>
+      <p>ثلاثة محاور تحدد كيف نعمل ولماذا: أين نريد أن نصل، وكيف نخطط للوصول إليه، وما الذي نقيس به تقدمنا.</p>
+    </div>
+    <div class="vsg-grid">
+      <div class="vsg-card">
+        <div class="tag mono">VISION</div>
+        <h3>رؤيتنا</h3>
+        <p>أن نكون المرجع الهندسي الأكثر ابتكاراً وموثوقية في المملكة، لنساهم بتميزنا المهني في تشكيل المعالم العمرانية بما يتماشى مع رؤية المملكة 2030.</p>
+      </div>
+      <div class="vsg-card">
+        <div class="tag mono">MISSION</div>
+        <h3>رسالتنا</h3>
+        <p>تقديم حلول هندسية استشارية متكاملة تدمج بين الابتكار الفني والمعايير العالمية، مع الالتزام بتطوير بيئة عمل احترافية تدعم كفاءاتنا الوطنية وتضمن تحقيق أعلى مستويات الرضا لعملائنا.</p>
+      </div>
+      <div class="vsg-card">
+        <div class="tag mono">GOALS</div>
+        <h3>أهدافنا</h3>
+        <ul>
+          <li>الوصول إلى أعلى معايير الدقة.</li>
+          <li>أتمتة العمليات لرفع سرعة الاستجابة.</li>
+          <li>التسليم للعملاء في المواعيد المحددة.</li>
+          <li>تطوير مهارات الفريق لضمان استدامة التميز.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dim-divider mono"><span class="tick"></span><span class="rule"></span><span class="label">02 — خدماتنا</span><span class="rule"></span><span class="tick"></span></div>
+
+<!-- ===== SERVICES ===== -->
+<section id="services" class="services reveal">
+  <div class="wrap">
+    <div class="services-head">
+      <div>
+        <div class="eyebrow">ما نقدّمه</div>
+        <h2 class="section-title">الخدمات التي نقدّمها</h2>
+      </div>
+      <p>مجموعة متكاملة من الخدمات الهندسية تغطي مشروعك من الدراسة الأولية وحتى التسليم.</p>
+    </div>
+    <div class="services-grid">
+
+      <!-- 01 -->
+      <div class="service-card">
+        <div class="idx mono">01</div>
+        <i class="fa-solid fa-briefcase fa-width-auto service-icon" style="color: rgb(32, 13, 85);"></i>
+        <h3>استشارات إدارية</h3>
+      </div>
+
+      <!-- 02 -->
+      <div class="service-card">
+        <div class="idx mono">02</div>
+        <i class="fa-solid fa-building fa-width-auto service-icon" style="color: rgb(32, 13, 85);"></i>
+        <h3>التصميم المعماري</h3>
+      </div>
+
+      <!-- 03 -->
+      <div class="service-card">
+        <div class="idx mono">03</div>
+        <i class="fa-solid fa-clipboard-check fa-width-auto service-icon" style="color: rgb(32, 13, 85);"></i>
+        <h3>الإشراف الهندسي</h3>
+      </div>
+
+      <!-- 04 -->
+      <div class="service-card">
+        <div class="idx mono">04</div>
+        <i class="fa-solid fa-ruler-combined fa-width-auto service-icon" style="color: rgb(32, 13, 85);"></i>
+        <h3>التصميم المدني والإنشائي</h3>
+      </div>
+
+      <!-- 05 -->
+      <div class="service-card">
+        <div class="idx mono">05</div>
+        <i class="fa-solid fa-bolt fa-width-auto service-icon" style="color: rgb(32, 13, 85);"></i>
+        <h3>الهندسة الكهربائية</h3>
+      </div>
+
+      <!-- 06 -->
+      <div class="service-card">
+        <div class="idx mono">06</div>
+        <i class="fa-solid fa-gears fa-width-auto service-icon" style="color: rgb(32, 13, 85);"></i>
+        <h3>الهندسة الميكانيكية</h3>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects" class="projects reveal">
+  <div class="wrap">
+    <div class="projects-head">
+      <div>
+        <div class="eyebrow">أعمالنا</div>
+        <h2 class="section-title">من مشاريعنا</h2>
+      </div>
+      <p>نماذج من مشاريع نفّذها المكتب في قطاعات مختلفة، تعكس تنوّع خبراتنا الهندسية ودقة التنفيذ.</p>
+    </div>
+    <div class="projects-grid">
+
+      <!-- 01 -->
+      <div class="project-card">
+        <div class="project-thumb">
+          <span class="project-tag mono">تجاري</span>
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#FFFFFF" stroke-width="1">
+              <line x1="200" y1="0" x2="60" y2="190"/>
+              <line x1="200" y1="0" x2="140" y2="196"/>
+              <line x1="200" y1="0" x2="200" y2="200"/>
+              <line x1="200" y1="0" x2="260" y2="196"/>
+              <line x1="200" y1="0" x2="340" y2="190"/>
+            </g>
+          </svg>
+          <span class="project-num mono">01</span>
+        </div>
+        <div class="project-body">
+          <div class="meta">العليا، الرياض — 2023</div>
+          <h3>برج الأعمال</h3>
+          <p>مبنى مكاتب تجاري من 18 طابقاً، شمل التصميم الإنشائي والمعماري الكامل والإشراف على التنفيذ.</p>
+        </div>
+      </div>
+
+      <!-- 02 -->
+      <div class="project-card">
+        <div class="project-thumb">
+          <span class="project-tag mono">سكني</span>
+
+          <img src="https://pbs.twimg.com/media/F4T9DmCWQAE3Q9Y.jpg">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#FFFFFF" stroke-width="1">
+              <line x1="200" y1="0" x2="60" y2="190"/>
+              <line x1="200" y1="0" x2="140" y2="196"/>
+              <line x1="200" y1="0" x2="200" y2="200"/>
+              <line x1="200" y1="0" x2="260" y2="196"/>
+              <line x1="200" y1="0" x2="340" y2="190"/>
+            </g>
+          </svg>
+          <span class="project-num mono">02</span>
+        </div>
+        <div class="project-body">
+          <div class="meta">الرياض</div>
+          <h3>فلة خاصة</h3>
+          <p>تصميم معماري مودرن لمجمع سكني راقٍ يتسم بلمسات خشبية وواجهات زجاجية واسعة لضمان إضاءة طبيعية وأناقة عصرية.</p>
+        </div>
+      </div>
+
+      <!-- 03 -->
+      <div class="project-card">
+        <div class="project-thumb">
+          <span class="project-tag mono">صناعي</span>
+          <img src="https://mazeng.sa/wp-content/uploads/elementor/thumbs/storeee-plhnqge8w343r53on1t4omina616jddgf6hn3cepm4.jpg">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#FFFFFF" stroke-width="1">
+              <line x1="200" y1="0" x2="60" y2="190"/>
+              <line x1="200" y1="0" x2="140" y2="196"/>
+              <line x1="200" y1="0" x2="200" y2="200"/>
+              <line x1="200" y1="0" x2="260" y2="196"/>
+              <line x1="200" y1="0" x2="340" y2="190"/>
+            </g>
+          </svg>
+          <span class="project-num mono">03</span>
+        </div>
+        <div class="project-body">
+          <div class="meta">الدمام — 2021</div>
+          <h3>مجمع المستودعات اللوجستية</h3>
+          <p>تصميم وتنفيذ مستودعات وهياكل معدنية حديثة مخصصة للتخزين والخدمات اللوجستية مع مراعاة أعلى معايير السلامة واستغلال المساحات..</p>
+        </div>
+      </div>
+
+      <!-- 04 -->
+      <div class="project-card">
+        <div class="project-thumb">
+          <span class="project-tag mono">تجاري</span>
+          <img src="https://pbs.twimg.com/media/F4oqSE-XIAAc_9m.jpg">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#FFFFFF" stroke-width="1">
+              <line x1="200" y1="0" x2="60" y2="190"/>
+              <line x1="200" y1="0" x2="140" y2="196"/>
+              <line x1="200" y1="0" x2="200" y2="200"/>
+              <line x1="200" y1="0" x2="260" y2="196"/>
+              <line x1="200" y1="0" x2="340" y2="190"/>
+            </g>
+          </svg>
+          <span class="project-num mono">04</span>
+        </div>
+        <div class="project-body">
+          <div class="meta">الرياض — 2023</div>
+          <h3>محطة خدمة وتجزئة الوقود</h3>
+          <p>مجمع تجاري متعدد الاستخدامات، تولى تصميم وتطوير محطات الوقود والخدمات المتكاملة وفق أعلى معايير الجودة والاستغلال الأمثل للمساحات.</p>
+        </div>
+      </div>
+
+      <!-- 05 -->
+      <div class="project-card">
+        <div class="project-thumb">
+          <span class="project-tag mono">تجاري</span>
+          <img src="https://static.arrajol.com/styles/693x433/public/2021-04/%D9%85%D9%88%D9%82%D8%B9-%D9%85%D9%83%D8%AA%D8%A8%D8%A9-%D8%AC%D8%B1%D9%8A%D8%B1.jpg">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#FFFFFF" stroke-width="1">
+              <line x1="200" y1="0" x2="60" y2="190"/>
+              <line x1="200" y1="0" x2="140" y2="196"/>
+              <line x1="200" y1="0" x2="200" y2="200"/>
+              <line x1="200" y1="0" x2="260" y2="196"/>
+              <line x1="200" y1="0" x2="340" y2="190"/>
+            </g>
+          </svg>
+          <span class="project-num mono">05</span>
+        </div>
+        <div class="project-body">
+          <div class="meta">الرياض — الغدير</div>
+          <h3>مكتبة جرير</h3>
+          <p>مشروع هندسي متكامل لمجمع تجاري حديث، يشمل التصميم الإنشائي والمعماري للواجهات العريضة والتقسيمات الداخلية للمساحات المفتوحة، مع تخطيط مواقف السيارات والمداخل لخدمة العلامات التجارية الكبرى.</p>
+        </div>
+      </div>
+
+      <!-- 06 -->
+      <div class="project-card">
+        <div class="project-thumb">
+          <span class="project-tag mono">تعليمي</span>
+          <img src="https://pbs.twimg.com/media/FhnOkrMXoAEQhOt?format=jpg&name=large">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#FFFFFF" stroke-width="1">
+              <line x1="200" y1="0" x2="60" y2="190"/>
+              <line x1="200" y1="0" x2="140" y2="196"/>
+              <line x1="200" y1="0" x2="200" y2="200"/>
+              <line x1="200" y1="0" x2="260" y2="196"/>
+              <line x1="200" y1="0" x2="340" y2="190"/>
+            </g>
+          </svg>
+          <span class="project-num mono">06</span>
+        </div>
+        <div class="project-body">
+          <div class="meta">الرياض</div>
+          <h3>إشراف هندسي على فرع ستاربكس حي الروضة</h3>
+          <p>الإشراف الهندسي الميداني على أعمال تنفيذ وتجهيز فرع ستاربكس (خدمة السيارات)، لضمان أعلى معايير الجودة ومطابقة المواصفات المعتمدة.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="contact reveal">
+  <svg class="fan-bg" viewBox="0 0 1400 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="#FFFFFF" stroke-width="1">
+      <line x1="700" y1="0" x2="120" y2="660"/>
+      <line x1="700" y1="0" x2="320" y2="680"/>
+      <line x1="700" y1="0" x2="520" y2="692"/>
+      <line x1="700" y1="0" x2="700" y2="700"/>
+      <line x1="700" y1="0" x2="880" y2="692"/>
+      <line x1="700" y1="0" x2="1080" y2="680"/>
+      <line x1="700" y1="0" x2="1280" y2="660"/>
+    </g>
+  </svg>
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <div class="eyebrow">تواصل معنا</div>
+      <h2>اطلب استشارتك الهندسية</h2>
+      <p>أخبرنا عن مشروعك وسيتواصل معك أحد مستشارينا الهندسيين خلال يومي عمل لمناقشة التفاصيل والخطوات القادمة.</p>
+      <div class="contact-list">
+        <div class="row"><span class="k mono">الهاتف</span><span class="v">00966114915733</span></div>
+        <div class="row"><span class="k mono">البريد</span><span class="v">info@mazengineering.com</span></div>
+        <div class="row"><span class="k mono">الموقع</span><span class="v">Tarim Tower, شارع العليا، العليا، الرياض 12221</span></div>
+        <div class="row"><span class="k mono">الدوام</span><span class="v">الأحد – الخميس، 8 صباحاً – 5 مساءً</span></div>
+      </div>
+    </div>
+
+    <form class="form-card" onsubmit="return handleSubmit(event)">
+      <div class="form-title mono">طلب استشارة</div>
+      <div class="form-row">
+        <div class="field">
+          <label for="name">الاسم الكامل</label>
+          <input id="name" name="name" type="text" placeholder="اسمك" required>
+        </div>
+        <div class="field">
+          <label for="phone">رقم الجوال</label>
+          <input id="phone" name="phone" type="tel" placeholder="05xxxxxxxx" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field">
+          <label for="email">البريد الإلكتروني</label>
+          <input id="email" name="email" type="email" placeholder="example@email.com" required>
+        </div>
+        <div class="field">
+  <label for="service">نوع الخدمة</label>
+  <select id="service" name="service" required>
+    <option value="" disabled selected hidden>اختر الخدمة...</option>
+    <option value="استشارات إدارية">استشارات إدارية</option>
+    <option value="التصميم المعماري">التصميم المعماري</option>
+    <option value="الإشراف الهندسي">الإشراف الهندسي</option>
+    <option value="التصميم المدني والإنشائي">التصميم المدني والإنشائي</option>
+    <option value="الهندسة الكهربائية">الهندسة الكهربائية</option>
+    <option value="الهندسة الميكانيكية">الهندسة الميكانيكية</option>
+  </select>
+</div>
+      </div>
+      <div class="form-row">
+        <div class="field full">
+          <label for="message">تفاصيل المشروع</label>
+          <textarea id="message" name="message" placeholder="اكتب نبذة مختصرة عن مشروعك واحتياجك الهندسي..."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">إرسال طلب الاستشارة</button>
+      <div class="form-note" id="formNote">سيتم التواصل معك خلال يومي عمل من فريقنا الهندسي.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>© 2026 ماز الهندسية — MAZ Engineering. جميع الحقوق محفوظة.</span>
+    <span class="mono">MAZ ENGINEERING CONSULTANTS</span>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e){
+    e.preventDefault();
+    const note = document.getElementById('formNote');
+    note.textContent = 'تم استلام طلبك بنجاح، سنتواصل معك قريباً. شكراً لك.';
+    note.style.color = 'green';
+    e.target.reset();
+    return false;
+  }
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
