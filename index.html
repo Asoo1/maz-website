@@ -851,8 +851,9 @@
 .ticker-track {
   display: inline-flex;
   align-items: center;
-  gap: 50px;
-  animation: marquee 35s linear infinite;
+  gap: 60px; /* مسافة متناسقة بين اللوجوات */
+  width: max-content; /* يضمن احتواء كافة اللوجوات بنفس الصف دون انكسار */
+  animation: marquee 50s linear infinite; /* تم تعديل السرعة لـ 50 ثانية لتدفق ناعم */
 }
 
 /* توقف الحركة عند الوقوف بالماوس */
@@ -865,13 +866,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90px; /* تم التكبير من 65px إلى 90px */
-  padding: 0 15px;
+  height: 90px;
+  padding: 0 10px;
 }
 
-/* تكبير حجم صورة اللوجو نفسها */
 .client-logo img {
-  max-height: 80px; /* تم التكبير من 55px إلى 80px لظهور أوضح وأكبر */
+  max-height: 75px;
   width: auto;
   filter: grayscale(100%);
   opacity: 0.75;
@@ -881,30 +881,30 @@
 .client-logo:hover img {
   filter: grayscale(0%);
   opacity: 1;
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
-/* حركة التمرير المستمرة */
+/* تعديل نسبة التحريك لـ -50% للتحرك عبر نصف طول الشريط المكرر كاملاً */
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(50%);
-  }
-}
-
-/* للغة الإنجليزية (تتحرك بالاتجاه المعاكس) */
-[dir="ltr"] .ticker-track {
-  animation: marquee-ltr 35s linear infinite;
-}
-
-@keyframes marquee-ltr {
-  0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* الاتجاه المعاكس لنمط RTL العربي */
+[dir="rtl"] .ticker-track {
+  animation: marquee-rtl 50s linear infinite;
+}
+
+@keyframes marquee-rtl {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
   }
 }
   /* ---------- CTA banner ---------- */
@@ -1505,7 +1505,6 @@
 
   </div>
 
-</section>
 <!-- ===== OUR CLIENTS ===== -->
 <section id="clients" class="clients-section reveal">
   <div class="wrap">
@@ -1517,38 +1516,37 @@
 
   <div class="ticker-container">
     <div class="ticker-track">
+      <!-- المجموعة الأولى (14 لوجو) -->
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894956984-zvbxvb4n.svg" alt="وزارة الإسكان"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1777118779549-sr30ggdy.svg" alt="وافي"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895156694-m5d48b2s.svg" alt="المؤسسة العامة لتحلية المياه"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895290666-spwo2qse.svg" alt="الهيئة العامة للإحصاء"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/user-submissions/1779708223844-cyjlg03f.svg" alt="أمانة منطقة الرياض"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894938930-ay7yc5w4.svg" alt="الهيئة الملكية لمحافظة العلا"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894944291-yhw4dzwn.svg" alt="هيئة حقوق الإنسان"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/png/1774932013054-9lf1xyoy.png" alt="نادك"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932750681-4g0ub5c0.svg" alt="مدن"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894959164-p1a2jdmv.svg" alt="الهيئة العامة للطيران المدني"></div>
+      <div class="client-logo"><img src="https://i0.wp.com/ksalogo.com/wp-content/uploads/2025/01/Saptco-01.png?fit=1000%2C1000&ssl=1" alt="سابتكو"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932676183-2ak6gk56.svg" alt="الجمارك السعودية"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774896845635-idymdjv0.svg" alt="هيئة تقويم التعليم والتدريب"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774931800951-7dch6u9x.svg" alt="نيوم"></div>
 
-<!-- المجموعة الأولى من الشعارات -->
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894956984-zvbxvb4n.svg" alt="وزارة الإسكان"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1777118779549-sr30ggdy.svg" alt="وافي"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895156694-m5d48b2s.svg" alt="المؤسسة العامة لتحلية المياه"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895290666-spwo2qse.svg" alt="الهيئة العامة للإحصاء"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/user-submissions/1779708223844-cyjlg03f.svg" alt="أمانة منطقة الرياض"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894938930-ay7yc5w4.svg" alt="الهيئة الملكية لمحافظة العلا"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894944291-yhw4dzwn.svg" alt="هيئة حقوق الإنسان"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/png/1774932013054-9lf1xyoy.png" alt="نادك"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932750681-4g0ub5c0.svg" alt="مدن"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894959164-p1a2jdmv.svg" alt="الهيئة العامة للطيران المدني"></div>
-<div class="client-logo"><img src="https://i0.wp.com/ksalogo.com/wp-content/uploads/2025/01/Saptco-01.png?fit=1000%2C1000&ssl=1" alt="سابتكو"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932676183-2ak6gk56.svg" alt="الجمارك السعودية"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774896845635-idymdjv0.svg" alt="هيئة تقويم التعليم والتدريب"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774931800951-7dch6u9x.svg" alt="نيوم"></div>
-
-<!-- تكرار المجموعة لضمان استمرارية حركة السلايدر -->
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894956984-zvbxvb4n.svg" alt="وزارة الإسكان"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1777118779549-sr30ggdy.svg" alt="وافي"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895156694-m5d48b2s.svg" alt="المؤسسة العامة لتحلية المياه"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895290666-spwo2qse.svg" alt="الهيئة العامة للإحصاء"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/user-submissions/1779708223844-cyjlg03f.svg" alt="أمانة منطقة الرياض"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894938930-ay7yc5w4.svg" alt="الهيئة الملكية لمحافظة العلا"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894944291-yhw4dzwn.svg" alt="هيئة حقوق الإنسان"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/png/1774932013054-9lf1xyoy.png" alt="نادك"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932750681-4g0ub5c0.svg" alt="مدن"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894959164-p1a2jdmv.svg" alt="الهيئة العامة للطيران المدني"></div>
-<div class="client-logo"><img src="https://i0.wp.com/ksalogo.com/wp-content/uploads/2025/01/Saptco-01.png?fit=1000%2C1000&ssl=1" alt="سابتكو"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932676183-2ak6gk56.svg" alt="الجمارك السعودية"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774896845635-idymdjv0.svg" alt="هيئة تقويم التعليم والتدريب"></div>
-<div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774931800951-7dch6u9x.svg" alt="نيوم"></div>
+      <!-- تكرار المجموعة الثانية بنفس الترتيب لضمان حلقة حركة متصلة ومفتوحة 100% -->
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894956984-zvbxvb4n.svg" alt="وزارة الإسكان"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1777118779549-sr30ggdy.svg" alt="وافي"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895156694-m5d48b2s.svg" alt="المؤسسة العامة لتحلية المياه"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895290666-spwo2qse.svg" alt="الهيئة العامة للإحصاء"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/user-submissions/1779708223844-cyjlg03f.svg" alt="أمانة منطقة الرياض"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894938930-ay7yc5w4.svg" alt="الهيئة الملكية لمحافظة العلا"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894944291-yhw4dzwn.svg" alt="هيئة حقوق الإنسان"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/png/1774932013054-9lf1xyoy.png" alt="نادك"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932750681-4g0ub5c0.svg" alt="مدن"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894959164-p1a2jdmv.svg" alt="الهيئة العامة للطيران المدني"></div>
+      <div class="client-logo"><img src="https://i0.wp.com/ksalogo.com/wp-content/uploads/2025/01/Saptco-01.png?fit=1000%2C1000&ssl=1" alt="سابتكو"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932676183-2ak6gk56.svg" alt="الجمارك السعودية"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774896845635-idymdjv0.svg" alt="هيئة تقويم التعليم والتدريب"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774931800951-7dch6u9x.svg" alt="نيوم"></div>
     </div>
   </div>
 </section>
