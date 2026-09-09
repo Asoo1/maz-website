@@ -473,6 +473,61 @@
   @media (max-width:860px){.sectors-strip{grid-template-columns:repeat(3,1fr);}}
   @media (max-width:480px){.sectors-strip{grid-template-columns:repeat(2,1fr);}}
 
+  /* ---------- accredited by (معتمد من) ---------- */
+  .accredited{padding:80px 0 90px; background:var(--bg-alt);}
+  .accredited-head{
+    text-align:center;
+    margin-bottom:48px;
+  }
+  .accredited-head h2{
+    font-size:clamp(32px,4.5vw,52px);
+    font-weight:700;
+    color:#201C46;
+    margin-bottom:20px;
+  }
+  .accredited-head .underline{
+    width:80px; height:4px;
+    background:var(--bronze);
+    margin:0 auto;
+  }
+  .accredited-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+    align-items:center;
+  }
+  .accredited-item{
+    background:transparent;
+    border:none;
+    padding:14px;
+    min-height:170px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    text-align:center;
+    transition:transform .25s, opacity .2s;
+  }
+  .accredited-item:hover{transform:translateY(-4px) scale(1.04); opacity:.9;}
+  .accredited-item img{
+    max-height:160px;
+    width:auto;
+    max-width:100%;
+    object-fit:contain;
+  }
+  @media (max-width:640px){
+    .accredited-item{min-height:110px;}
+    .accredited-item img{max-height:100px;}
+  }
+  .accredited-item .placeholder-mark{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-2);
+    font-weight:600;
+  }
+  @media (max-width:860px){.accredited-strip{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){.accredited-strip{grid-template-columns:repeat(1,1fr);}}
 
   /* ---------- services ---------- */
   .services{padding:110px 0;}
@@ -1354,6 +1409,43 @@ Villa</h3>
 
 </section>
 
+<!-- ===== ACCREDITED BY (معتمد من) ===== -->
+<section id="accredited" class="accredited reveal">
+  <div class="wrap">
+    <div class="accredited-head">
+      <h2>معتمد من</h2>
+      <div class="underline"></div>
+    </div>
+    <div class="accredited-strip">
+
+      <!-- بلدي -->
+      <div class="accredited-item">
+        <img src="https://salogos.b-cdn.net/logos/svg/1774895227249-gba79vwj.svg" alt="منصة بلدي" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="placeholder-mark" style="display:none;">بلدي</span>
+      </div>
+
+      <!-- مدن -->
+      <div class="accredited-item">
+        <img src="https://salogos.b-cdn.net/logos/svg/1774932750681-4g0ub5c0.svg" alt="مدن" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="placeholder-mark" style="display:none;">مدن</span>
+      </div>
+
+      <!-- الهيئة السعودية للمهندسين -->
+      <div class="accredited-item">
+        <img src="https://salogos.b-cdn.net/logos/png/1774932013054-9lf1xyoy.png" alt="الهيئة السعودية للمهندسين" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="placeholder-mark" style="display:none;">الهيئة السعودية للمهندسين</span>
+      </div>
+
+      <!-- أمانة الرياض -->
+      <div class="accredited-item">
+        <img src="https://salogos.b-cdn.net/user-submissions/1779708223844-cyjlg03f.svg" alt="أمانة منطقة الرياض" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="placeholder-mark" style="display:none;">أمانة الرياض</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ===== CTA BANNER ===== -->
 <section class="cta-banner">
   <div class="wrap">
@@ -1371,7 +1463,7 @@ Villa</h3>
       <h2>اطلب استشارتك الهندسية</h2>
       <p>أخبرنا عن مشروعك وسيتواصل معك أحد مستشارينا الهندسيين خلال يومي عمل لمناقشة التفاصيل والخطوات القادمة.</p>
       <div class="contact-list">
-        <div class="row"><span class="k mono">الهاتف</span><span class="v">+966 11 491 5733</span></div>
+        <div class="row"><span class="k mono">اتصال</span><span class="v">⁦+966 55 685 7938⁩</span></div>
         <div class="row"><span class="k mono">البريد</span><span class="v">info@mazengineering.com</span></div>
         <div class="row"><span class="k mono">الموقع</span><span class="v">Tarim Tower, شارع العليا، العليا، الرياض 12221</span></div>
         <div class="row"><span class="k mono">الدوام</span><span class="v">الأحد – الخميس، 8 صباحاً – 5 مساءً</span></div>
