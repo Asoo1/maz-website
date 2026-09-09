@@ -840,85 +840,131 @@
   @media (max-width:960px){.portfolio-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:640px){.portfolio-grid{grid-template-columns:1fr;}}
 /* ---------- clients slider ---------- */
+/* توسيع السكشن وتحديد المسافات العمودية */
 .clients-section {
-  padding: 80px 0;
-  background: var(--bg);
-  border-top: 1px solid var(--line);
-  overflow: hidden;
+  width: 100%;
+  padding: 80px 0; /* يمكنك زيادة الرقم لزيادة الارتفاع */
+  box-sizing: border-box;
 }
 
+/* توسيط العنوان والرأس في المنتصف */
 .clients-head {
   text-align: center;
   margin-bottom: 40px;
-}
-
-.ticker-container {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-}
-
-.ticker-track {
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 60px; /* مسافة متناسقة بين اللوجوات */
-  width: max-content; /* يضمن احتواء كافة اللوجوات بنفس الصف دون انكسار */
-  animation: marquee 50s linear infinite; /* تم تعديل السرعة لـ 50 ثانية لتدفق ناعم */
+  justify-content: center;
 }
 
-/* توقف الحركة عند الوقوف بالماوس */
-.ticker-container:hover .ticker-track {
-  animation-play-state: paused;
+.clients-head .eyebrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.client-logo {
-  flex-shrink: 0;
+.clients-head .section-title {
+  text-align: center;
+  width: 100%;
+  margin: 10px 0 0 0;
+}
+
+/* توسيع معرض الشعارات ليأخذ كامل العرض المتاح */
+.client-logos-carousel {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 1400px; /* زيادة العرض الأقصى من 1200px إلى 1400px */
+  margin: 0 auto;
+  padding: 10px 50px;
+  box-sizing: border-box;
+}
+
+/* المنطقة الظاهرة للتمرير */
+.logos-viewport {
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.logos-viewport::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* شريط الشعارات الداخلي */
+.logos-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: max-content;
+  padding: 15px 5px;
+}
+
+/* بطاقات الشعارات الفردية */
+.client-logo {
+  flex: 0 0 auto;
+  width: 150px;
   height: 90px;
-  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border: 1px solid #eef0f3;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.client-logo img {
-  max-height: 75px;
-  width: auto;
-  filter: grayscale(100%);
-  opacity: 0.75;
-  transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+.client-logo:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
-.client-logo:hover img {
-  filter: grayscale(0%);
-  opacity: 1;
-  transform: scale(1.1);
+.client-logo {
+  width: 180px;  /* بدلاً من 150px */
+  height: 110px; /* بدلاً من 90px */
+  padding: 8px;  /* تقليل الهامش الداخلي ليعطي مساحة أكبر للصورة */
 }
 
-/* تعديل نسبة التحريك لـ -50% للتحرك عبر نصف طول الشريط المكرر كاملاً */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+/* أزرار التحكم (الأسهم) */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  font-size: 18px;
+  color: #333333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease;
+  z-index: 5;
 }
 
-/* الاتجاه المعاكس لنمط RTL العربي */
-[dir="rtl"] .ticker-track {
-  animation: marquee-rtl 50s linear infinite;
+.carousel-btn:hover {
+  background-color: #007bff;
+  color: #ffffff;
+  border-color: #007bff;
 }
 
-@keyframes marquee-rtl {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(50%);
-  }
+.prev-btn {
+  right: 5px;
+}
+
+.next-btn {
+  left: 5px;
 }
   /* ---------- CTA banner ---------- */
   .cta-banner{
@@ -1528,34 +1574,21 @@
     </div>
   </div>
 
-  <div class="ticker-container">
-    <div class="ticker-track">
-      <!-- المجموعة الأولى (14 لوجو) -->
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894956984-zvbxvb4n.svg" alt="وزارة الإسكان"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1777118779549-sr30ggdy.svg" alt="وافي"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895156694-m5d48b2s.svg" alt="المؤسسة العامة لتحلية المياه"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895290666-spwo2qse.svg" alt="الهيئة العامة للإحصاء"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/user-submissions/1779708223844-cyjlg03f.svg" alt="أمانة منطقة الرياض"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894938930-ay7yc5w4.svg" alt="الهيئة الملكية لمحافظة العلا"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894944291-yhw4dzwn.svg" alt="هيئة حقوق الإنسان"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/png/1774932013054-9lf1xyoy.png" alt="نادك"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932750681-4g0ub5c0.svg" alt="مدن"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894959164-p1a2jdmv.svg" alt="الهيئة العامة للطيران المدني"></div>
-      <div class="client-logo"><img src="https://i0.wp.com/ksalogo.com/wp-content/uploads/2025/01/Saptco-01.png?fit=1000%2C1000&ssl=1" alt="سابتكو"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932676183-2ak6gk56.svg" alt="الجمارك السعودية"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774896845635-idymdjv0.svg" alt="هيئة تقويم التعليم والتدريب"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774931800951-7dch6u9x.svg" alt="نيوم"></div>
+<div class="client-logos-carousel">
+  <!-- سهم السابق (يمين في العربية) -->
+  <button class="carousel-btn prev-btn" id="prevBtn" aria-label="السابق">&#10095;</button>
 
-      <!-- تكرار المجموعة الثانية بنفس الترتيب لضمان حلقة حركة متصلة ومفتوحة 100% -->
+  <!-- حاوية الشعارات -->
+  <div class="logos-viewport" id="logosViewport">
+    <div class="logos-container">
       <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894956984-zvbxvb4n.svg" alt="وزارة الإسكان"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1777118779549-sr30ggdy.svg" alt="وافي"></div>
+      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1777118779549-sr30ggdy.svg" alt="مدن"></div>
       <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895156694-m5d48b2s.svg" alt="المؤسسة العامة لتحلية المياه"></div>
       <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774895290666-spwo2qse.svg" alt="الهيئة العامة للإحصاء"></div>
       <div class="client-logo"><img src="https://salogos.b-cdn.net/user-submissions/1779708223844-cyjlg03f.svg" alt="أمانة منطقة الرياض"></div>
       <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894938930-ay7yc5w4.svg" alt="الهيئة الملكية لمحافظة العلا"></div>
       <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894944291-yhw4dzwn.svg" alt="هيئة حقوق الإنسان"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/png/1774932013054-9lf1xyoy.png" alt="نادك"></div>
-      <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932750681-4g0ub5c0.svg" alt="مدن"></div>
+      <div class="client-logo"><img src="https://i0.wp.com/worlds-food.com/wp-content/uploads/2017/05/%D8%A7%D9%84%D8%B4%D8%B1%D9%83%D8%A9-%D8%A7%D9%84%D9%88%D8%B7%D9%86%D9%8A%D8%A9-%D9%84%D9%84%D8%AA%D9%86%D9%85%D9%8A%D8%A9-%D8%A7%D9%84%D8%B2%D8%B1%D8%A7%D8%B9%D9%8A%D8%A9-%D9%86%D8%A7%D8%AF%D9%83.png?fit=630%2C349&ssl=1" alt="نادك"></div>
       <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774894959164-p1a2jdmv.svg" alt="الهيئة العامة للطيران المدني"></div>
       <div class="client-logo"><img src="https://i0.wp.com/ksalogo.com/wp-content/uploads/2025/01/Saptco-01.png?fit=1000%2C1000&ssl=1" alt="سابتكو"></div>
       <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774932676183-2ak6gk56.svg" alt="الجمارك السعودية"></div>
@@ -1563,6 +1596,10 @@
       <div class="client-logo"><img src="https://salogos.b-cdn.net/logos/svg/1774931800951-7dch6u9x.svg" alt="نيوم"></div>
     </div>
   </div>
+
+  <!-- سهم التالي (يسار في العربية) -->
+  <button class="carousel-btn next-btn" id="nextBtn" aria-label="التالي">&#10094;</button>
+</div>
 </section>
 
 <!-- ===== ACCREDITED BY (معتمد من) ===== -->
@@ -1680,6 +1717,40 @@
 </footer>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const viewport = document.getElementById('logosViewport');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+
+  // مسافة التمرير عند كل ضغطة (بالبكسل)
+  const scrollStep = 300;
+
+  // سهم التالي
+  nextBtn.addEventListener('click', () => {
+    // في اتجاه RTL تكون قيمة scrollLeft بالسالب
+    const maxScrollLeft = viewport.scrollWidth - viewport.clientWidth;
+    const currentScroll = Math.abs(viewport.scrollLeft);
+
+    // إذا وصلنا إلى نهاية الشريط (جهة اليسار)، نعود إلى البداية
+    if (currentScroll + viewport.clientWidth >= viewport.scrollWidth - 10) {
+      viewport.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      viewport.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    }
+  });
+
+  // سهم السابق
+  prevBtn.addEventListener('click', () => {
+    const currentScroll = Math.abs(viewport.scrollLeft);
+
+    // إذا كنا في البداية (جهة اليمين)، ننتقل إلى نهاية الشريط
+    if (currentScroll <= 10) {
+      viewport.scrollTo({ left: -viewport.scrollWidth, behavior: 'smooth' });
+    } else {
+      viewport.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    }
+  });
+});
   var currentLang = 'ar';
   var successMsg = { ar: 'تم استلام طلبك بنجاح، سنتواصل معك قريباً. شكراً لك.', en: 'Your request has been received. We will contact you soon. Thank you.' };
   function handleSubmit(e){
