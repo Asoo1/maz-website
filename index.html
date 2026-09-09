@@ -104,7 +104,7 @@
     align-items:center;
     justify-content:space-between;
   }
-  .brand img{height:44px;width:auto;}
+  .brand img{height:66px;width:auto;}
   .nav-links{
     display:flex;
     gap:34px;
@@ -118,6 +118,24 @@
     transition:color .2s;
   }
   .nav-links a:hover{color:var(--bronze-dark);}
+  .lang-toggle{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:inherit;
+    font-size:14.5px;
+    font-weight:500;
+    letter-spacing:normal;
+    color:var(--ink-2);
+    background:none;
+    border:none;
+    padding:4px 0;
+    border-radius:0;
+    cursor:pointer;
+    transition:color .2s;
+  }
+  .lang-toggle:hover{background:none; color:var(--bronze-dark);}
+  .lang-toggle i{font-size:13px;}
   .nav-cta{
     font-size:13.5px;
     font-weight:600;
@@ -983,14 +1001,18 @@
       <img src="https://mazeng.sa/wp-content/uploads/2022/01/cropped-Maz-Engineering_Logo_HiRes-removebg-300x100.png" alt="ماز الهندسية - MAZ Engineering">
     </a>
     <nav class="nav-links">
-      <a href="#about">نبذة عنا</a>
-      <a href="#vision">رؤيتنا وأهدافنا</a>
-      <a href="#services">خدماتنا</a>
-      <a href="#projects">مشاريعنا</a>
-      <a href="careers.html">الوظائف</a>
-      <a href="#contact">تواصل معنا</a>
+      <a href="#about" data-ar="نبذة عنا" data-en="About Us">نبذة عنا</a>
+      <a href="#vision" data-ar="رؤيتنا وأهدافنا" data-en="Vision &amp; Goals">رؤيتنا وأهدافنا</a>
+      <a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a>
+      <a href="#projects" data-ar="مشاريعنا" data-en="Projects">مشاريعنا</a>
+      <a href="careers.html" data-ar="الوظائف" data-en="Careers">الوظائف</a>
+      <a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+      <button type="button" class="lang-toggle" id="langToggle" aria-label="Switch language">
+        <i class="fa-solid fa-globe"></i>
+        <span id="langToggleLabel">EN</span>
+      </button>
     </nav>
-    <a class="nav-cta" href="#contact">اطلب استشارة</a>
+    <a class="nav-cta" href="#contact" data-ar="اطلب استشارة" data-en="Request Consultation">اطلب استشارة</a>
   </div>
 </header>
 <!-- ===== HERO ===== -->
@@ -1030,12 +1052,12 @@
     </g> 
   </svg> 
   <div class="wrap hero-photo-inner"> 
-    <div class="eyebrow">مكتب استشارات هندسية</div> 
-    <h1>حلول هندسية دقيقة، من <span>الفكرة</span> إلى الإنجاز</h1> 
-    <p class="lead">مكتب ماز الهندسية يرافق عملاءه من مالكي المشاريع والمطورين عبر مراحل التصميم والإشراف والتنفيذ، بمنهجية فنية صارمة ومعايير جودة عالية.</p> 
+    <div class="eyebrow" data-ar="مكتب استشارات هندسية" data-en="Engineering Consultancy Office">مكتب استشارات هندسية</div> 
+    <h1 data-ar-html="حلول هندسية دقيقة، من &lt;span&gt;الفكرة&lt;/span&gt; إلى الإنجاز" data-en-html="Precise Engineering Solutions, From &lt;span&gt;Concept&lt;/span&gt; to Completion">حلول هندسية دقيقة، من <span>الفكرة</span> إلى الإنجاز</h1> 
+    <p class="lead" data-ar="مكتب ماز الهندسية يرافق عملاءه من مالكي المشاريع والمطورين عبر مراحل التصميم والإشراف والتنفيذ، بمنهجية فنية صارمة ومعايير جودة عالية." data-en="MAZ Engineering supports project owners and developers through design, supervision, and execution, with rigorous technical methodology and high quality standards.">مكتب ماز الهندسية يرافق عملاءه من مالكي المشاريع والمطورين عبر مراحل التصميم والإشراف والتنفيذ، بمنهجية فنية صارمة ومعايير جودة عالية.</p> 
     <div class="hero-actions"> 
-      <a href="#contact" class="btn btn-primary">اطلب استشارة الآن</a> 
-      <a href="#services" class="btn btn-ghost" style="border-color:rgba(255,255,255,.5); color:#fff;">تعرف على خدماتنا</a> 
+      <a href="#contact" class="btn btn-primary" data-ar="اطلب استشارة الآن" data-en="Request a Consultation">اطلب استشارة الآن</a> 
+      <a href="#services" class="btn btn-ghost" style="border-color:rgba(255,255,255,.5); color:#fff;" data-ar="تعرف على خدماتنا" data-en="Explore Our Services">تعرف على خدماتنا</a> 
     </div> 
 <div class="hero-social"> 
   <a href="https://www.instagram.com/mazengineering/" aria-label="انستقرام" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a> 
@@ -1045,39 +1067,39 @@
   <span class="divider"></span> 
   <a class="email-link" href="mailto:info@mazengineering.com" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-envelope"></i></a>
 </div> 
-  <div class="scroll-cue"><span>انتقل للأسفل</span><i class="fa-solid fa-chevron-down"></i></div> 
+  <div class="scroll-cue"><span data-ar="انتقل للأسفل" data-en="Scroll Down">انتقل للأسفل</span><i class="fa-solid fa-chevron-down"></i></div> 
 </section>
 
 <div class="stats-bar">
   <div class="stats-bar-inner">
     <div class="stat-item">
       <div class="num mono">+500</div>
-      <div class="cap">مشروع هندسي منفَّذ</div>
+      <div class="cap" data-ar="مشروع هندسي منفَّذ" data-en="Executed Engineering Projects">مشروع هندسي منفَّذ</div>
     </div>
     <div class="stat-item">
       <div class="num mono">15</div>
-      <div class="cap">عاماً من الخبرة التراكمية</div>
+      <div class="cap" data-ar="عاماً من الخبرة التراكمية" data-en="Years of Combined Experience">عاماً من الخبرة التراكمية</div>
     </div>
     <div class="stat-item">
       <div class="num mono">9+</div>
-      <div class="cap">مهندس ومستشار</div>
+      <div class="cap" data-ar="مهندس ومستشار" data-en="Engineers &amp; Consultants">مهندس ومستشار</div>
     </div>
     <div class="stat-item">
       <div class="num mono">98%</div>
-      <div class="cap">نسبة رضا العملاء</div>
+      <div class="cap" data-ar="نسبة رضا العملاء" data-en="Client Satisfaction Rate">نسبة رضا العملاء</div>
     </div>
   </div>
 </div>
 
 
-<div class="dim-divider mono"><span class="tick"></span><span class="rule"></span><span class="label">01 — نبذة عنا</span><span class="rule"></span><span class="tick"></span></div>
+<div class="dim-divider mono"><span class="tick"></span><span class="rule"></span><span class="label" data-ar="01 — نبذة عنا" data-en="01 — About Us">01 — نبذة عنا</span><span class="rule"></span><span class="tick"></span></div>
 
 <!-- ===== ABOUT ===== -->
 
 <section id="about" class="about reveal">
   <div class="wrap">
-    <div class="eyebrow">من نحن</div>
-    <h2 class="section-title">نبذة تعريفية عن المكتب</h2>
+    <div class="eyebrow" data-ar="من نحن" data-en="Who We Are">من نحن</div>
+    <h2 class="section-title" data-ar="نبذة تعريفية عن المكتب" data-en="About the Office">نبذة تعريفية عن المكتب</h2>
     <div class="about-grid">
       <div class="about-visual">
       <!-- =====تصميم المباني الهندسية   <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1099,19 +1121,19 @@
         </svg>===== -->
         <img src="https://i.ibb.co/20kvwgdw/Code-Generated-Image.png" alt="مكتب ماز الهندسية" class="about-img">
         <div class="about-visual-caption">
-          <div class="cap-title">مكتب ماز الهندسية</div>
-          <div class="cap-sub mono">MAZ ENGINEERING · منذ 2009</div>
+          <div class="cap-title" data-ar="مكتب ماز الهندسية" data-en="MAZ Engineering Office">مكتب ماز الهندسية</div>
+          <div class="cap-sub mono" data-ar="MAZ ENGINEERING · منذ 2009" data-en="MAZ ENGINEERING · Since 2009">MAZ ENGINEERING · منذ 2009</div>
         </div>
       </div>
       <div>
-        <p>مكتب ماز الهندسية مكتب استشارات هندسية متكامل، يقدّم خدماته لقطاعي التطوير العقاري والإنشاءات من خلال فريق من المهندسين المتخصصين في التصميم الإنشائي والمعماري وإدارة المشاريع.</p>
-        <p>نؤمن بأن الهندسة الجيدة تبدأ بفهم دقيق لاحتياج العميل، ولذلك نحرص على العمل بشفافية ومنهجية واضحة في كل مرحلة، من الدراسة الأولية وحتى التسليم النهائي للمشروع.</p>
-        <p>يجمع المكتب بين الخبرة الفنية العميقة والالتزام بأحدث الأكواد والمعايير الهندسية المحلية والعالمية، لضمان مخرجات آمنة وقابلة للتنفيذ واقتصادية في آن واحد.</p>
+        <p data-ar="مكتب ماز الهندسية مكتب استشارات هندسية متكامل، يقدّم خدماته لقطاعي التطوير العقاري والإنشاءات من خلال فريق من المهندسين المتخصصين في التصميم الإنشائي والمعماري وإدارة المشاريع." data-en="MAZ Engineering is a full-service engineering consultancy serving the real estate development and construction sectors through a team of engineers specialized in structural and architectural design and project management.">مكتب ماز الهندسية مكتب استشارات هندسية متكامل، يقدّم خدماته لقطاعي التطوير العقاري والإنشاءات من خلال فريق من المهندسين المتخصصين في التصميم الإنشائي والمعماري وإدارة المشاريع.</p>
+        <p data-ar="نؤمن بأن الهندسة الجيدة تبدأ بفهم دقيق لاحتياج العميل، ولذلك نحرص على العمل بشفافية ومنهجية واضحة في كل مرحلة، من الدراسة الأولية وحتى التسليم النهائي للمشروع." data-en="We believe good engineering starts with a precise understanding of client needs, so we work with transparency and a clear methodology at every stage, from initial study through final handover.">نؤمن بأن الهندسة الجيدة تبدأ بفهم دقيق لاحتياج العميل، ولذلك نحرص على العمل بشفافية ومنهجية واضحة في كل مرحلة، من الدراسة الأولية وحتى التسليم النهائي للمشروع.</p>
+        <p data-ar="يجمع المكتب بين الخبرة الفنية العميقة والالتزام بأحدث الأكواد والمعايير الهندسية المحلية والعالمية، لضمان مخرجات آمنة وقابلة للتنفيذ واقتصادية في آن واحد." data-en="The office combines deep technical expertise with commitment to the latest local and international engineering codes and standards, ensuring safe, buildable, and cost-effective outcomes.">يجمع المكتب بين الخبرة الفنية العميقة والالتزام بأحدث الأكواد والمعايير الهندسية المحلية والعالمية، لضمان مخرجات آمنة وقابلة للتنفيذ واقتصادية في آن واحد.</p>
         <div class="about-figures">
-          <div class="fig"><div class="num mono">2009</div><div class="cap">تأسيس المكتب</div></div>
-          <div class="fig"><div class="num mono">9+</div><div class="cap">مهندس ومستشار</div></div>
-          <div class="fig"><div class="num mono">6</div><div class="cap">تخصصات هندسية</div></div>
-          <div class="fig"><div class="num mono">24/7</div><div class="cap">متابعة فنية للمشاريع</div></div>
+          <div class="fig"><div class="num mono">2009</div><div class="cap" data-ar="تأسيس المكتب" data-en="Office Founded">تأسيس المكتب</div></div>
+          <div class="fig"><div class="num mono">9+</div><div class="cap" data-ar="مهندس ومستشار" data-en="Engineers &amp; Consultants">مهندس ومستشار</div></div>
+          <div class="fig"><div class="num mono">6</div><div class="cap" data-ar="تخصصات هندسية" data-en="Engineering Disciplines">تخصصات هندسية</div></div>
+          <div class="fig"><div class="num mono">24/7</div><div class="cap" data-ar="متابعة فنية للمشاريع" data-en="Technical Project Follow-up">متابعة فنية للمشاريع</div></div>
         </div>
       </div>
     </div>
@@ -1122,9 +1144,9 @@
 <section id="vision" class="vsg reveal">
   <div class="wrap">
     <div class="vsg-head">
-      <div class="eyebrow">توجهنا</div>
-      <h2 class="section-title">رؤيتنا ورسالتنا وأهدافنا</h2>
-      <p>ثلاثة محاور تحدد كيف نعمل ولماذا: أين نريد أن نصل، وكيف نخطط للوصول إليه، وما الذي نقيس به تقدمنا.</p>
+      <div class="eyebrow" data-ar="توجهنا" data-en="Our Direction">توجهنا</div>
+      <h2 class="section-title" data-ar="رؤيتنا ورسالتنا وأهدافنا" data-en="Our Vision, Mission &amp; Goals">رؤيتنا ورسالتنا وأهدافنا</h2>
+      <p data-ar="ثلاثة محاور تحدد كيف نعمل ولماذا: أين نريد أن نصل، وكيف نخطط للوصول إليه، وما الذي نقيس به تقدمنا." data-en="Three pillars define how and why we work: where we aim to be, how we plan to get there, and how we measure our progress.">ثلاثة محاور تحدد كيف نعمل ولماذا: أين نريد أن نصل، وكيف نخطط للوصول إليه، وما الذي نقيس به تقدمنا.</p>
     </div>
     <div class="vsg-grid">
       <div class="vsg-card">
@@ -1132,11 +1154,11 @@
           <span class="vsg-index mono">01</span>
           <div>
             <div class="tag mono">VISION</div>
-            <h3>رؤيتنا</h3>
+            <h3 data-ar="رؤيتنا" data-en="Our Vision">رؤيتنا</h3>
           </div>
         </div>
         <div class="vsg-body">
-          <p>أن نكون المرجع الهندسي الأكثر ابتكاراً وموثوقية في المملكة، لنساهم بتميزنا المهني في تشكيل المعالم العمرانية بما يتماشى مع رؤية المملكة 2030.</p>
+          <p data-ar="أن نكون المرجع الهندسي الأكثر ابتكاراً وموثوقية في المملكة، لنساهم بتميزنا المهني في تشكيل المعالم العمرانية بما يتماشى مع رؤية المملكة 2030." data-en="To be the most innovative and trusted engineering reference in the Kingdom, contributing through our professional excellence to shaping the urban landscape in line with Saudi Vision 2030.">أن نكون المرجع الهندسي الأكثر ابتكاراً وموثوقية في المملكة، لنساهم بتميزنا المهني في تشكيل المعالم العمرانية بما يتماشى مع رؤية المملكة 2030.</p>
         </div>
       </div>
       <div class="vsg-card">
@@ -1144,11 +1166,11 @@
           <span class="vsg-index mono">02</span>
           <div>
             <div class="tag mono">MISSION</div>
-            <h3>رسالتنا</h3>
+            <h3 data-ar="رسالتنا" data-en="Our Mission">رسالتنا</h3>
           </div>
         </div>
         <div class="vsg-body">
-          <p>تقديم حلول هندسية استشارية متكاملة تدمج بين الابتكار الفني والمعايير العالمية، مع الالتزام بتطوير بيئة عمل احترافية تدعم كفاءاتنا الوطنية وتضمن تحقيق أعلى مستويات الرضا لعملائنا.</p>
+          <p data-ar="تقديم حلول هندسية استشارية متكاملة تدمج بين الابتكار الفني والمعايير العالمية، مع الالتزام بتطوير بيئة عمل احترافية تدعم كفاءاتنا الوطنية وتضمن تحقيق أعلى مستويات الرضا لعملائنا." data-en="Delivering integrated engineering consultancy solutions that combine technical innovation with global standards, while fostering a professional environment that supports our national talent and ensures the highest client satisfaction.">تقديم حلول هندسية استشارية متكاملة تدمج بين الابتكار الفني والمعايير العالمية، مع الالتزام بتطوير بيئة عمل احترافية تدعم كفاءاتنا الوطنية وتضمن تحقيق أعلى مستويات الرضا لعملائنا.</p>
         </div>
       </div>
       <div class="vsg-card">
@@ -1156,15 +1178,15 @@
           <span class="vsg-index mono">03</span>
           <div>
             <div class="tag mono">GOALS</div>
-            <h3>أهدافنا</h3>
+            <h3 data-ar="أهدافنا" data-en="Our Goals">أهدافنا</h3>
           </div>
         </div>
         <div class="vsg-body">
           <ul>
-            <li>الوصول إلى أعلى معايير الدقة.</li>
-            <li>أتمتة العمليات لرفع سرعة الاستجابة.</li>
-            <li>التسليم للعملاء في المواعيد المحددة.</li>
-            <li>تطوير مهارات الفريق لضمان استدامة التميز.</li>
+            <li data-ar="الوصول إلى أعلى معايير الدقة." data-en="Achieving the highest standards of precision.">الوصول إلى أعلى معايير الدقة.</li>
+            <li data-ar="أتمتة العمليات لرفع سرعة الاستجابة." data-en="Automating processes to increase responsiveness.">أتمتة العمليات لرفع سرعة الاستجابة.</li>
+            <li data-ar="التسليم للعملاء في المواعيد المحددة." data-en="Delivering to clients on schedule.">التسليم للعملاء في المواعيد المحددة.</li>
+            <li data-ar="تطوير مهارات الفريق لضمان استدامة التميز." data-en="Developing our team's skills to sustain excellence.">تطوير مهارات الفريق لضمان استدامة التميز.</li>
           </ul>
         </div>
       </div>
@@ -1172,24 +1194,24 @@
   </div>
 </section>
 
-<div class="dim-divider mono"><span class="tick"></span><span class="rule"></span><span class="label">02 — خدماتنا</span><span class="rule"></span><span class="tick"></span></div>
+<div class="dim-divider mono"><span class="tick"></span><span class="rule"></span><span class="label" data-ar="02 — خدماتنا" data-en="02 — Our Services">02 — خدماتنا</span><span class="rule"></span><span class="tick"></span></div>
 
 <!-- ===== SECTORS WE SERVE ===== -->
 <section class="sectors">
   <div class="wrap">
     <div class="sectors-head">
       <div>
-        <div class="eyebrow">مجال العمل</div>
-        <h2>القطاعات التي نخدمها</h2>
+        <div class="eyebrow" data-ar="مجال العمل" data-en="Scope of Work">مجال العمل</div>
+        <h2 data-ar="القطاعات التي نخدمها" data-en="Sectors We Serve">القطاعات التي نخدمها</h2>
       </div>
     </div>
     <div class="sectors-strip">
-      <div class="sector-item"><i class="fa-solid fa-building"></i><span>تجاري</span></div>
-      <div class="sector-item"><i class="fa-solid fa-house"></i><span>سكني</span></div>
-      <div class="sector-item"><i class="fa-solid fa-industry"></i><span>صناعي</span></div>
-      <div class="sector-item"><i class="fa-solid fa-graduation-cap"></i><span>تعليمي</span></div>
-      <div class="sector-item"><i class="fa-solid fa-hospital"></i><span>صحي</span></div>
-      <div class="sector-item"><i class="fa-solid fa-road"></i><span>بنية تحتية</span></div>
+      <div class="sector-item"><i class="fa-solid fa-building"></i><span data-ar="تجاري" data-en="Commercial">تجاري</span></div>
+      <div class="sector-item"><i class="fa-solid fa-house"></i><span data-ar="سكني" data-en="Residential">سكني</span></div>
+      <div class="sector-item"><i class="fa-solid fa-industry"></i><span data-ar="صناعي" data-en="Industrial">صناعي</span></div>
+      <div class="sector-item"><i class="fa-solid fa-graduation-cap"></i><span data-ar="تعليمي" data-en="Educational">تعليمي</span></div>
+      <div class="sector-item"><i class="fa-solid fa-hospital"></i><span data-ar="صحي" data-en="Healthcare">صحي</span></div>
+      <div class="sector-item"><i class="fa-solid fa-road"></i><span data-ar="بنية تحتية" data-en="Infrastructure">بنية تحتية</span></div>
     </div>
   </div>
 </section>
@@ -1199,10 +1221,10 @@
   <div class="wrap">
     <div class="services-head">
       <div>
-        <div class="eyebrow">ما نقدّمه</div>
-        <h2 class="section-title">الخدمات التي نقدّمها</h2>
+        <div class="eyebrow" data-ar="ما نقدّمه" data-en="What We Offer">ما نقدّمه</div>
+        <h2 class="section-title" data-ar="الخدمات التي نقدّمها" data-en="Services We Provide">الخدمات التي نقدّمها</h2>
       </div>
-      <p>مجموعة متكاملة من الخدمات الهندسية تغطي مشروعك من الدراسة الأولية وحتى التسليم.</p>
+      <p data-ar="مجموعة متكاملة من الخدمات الهندسية تغطي مشروعك من الدراسة الأولية وحتى التسليم." data-en="A complete suite of engineering services covering your project from initial study through handover.">مجموعة متكاملة من الخدمات الهندسية تغطي مشروعك من الدراسة الأولية وحتى التسليم.</p>
     </div>
     <div class="service-categories">
 
@@ -1212,15 +1234,15 @@
           <i class="fa-solid fa-briefcase category-icon"></i>
           <div>
             <span class="idx mono">01</span>
-            <h3>خدمات إدارية</h3>
-            <span class="category-hint mono">مرّر الفأرة لعرض الخدمات ↓</span>
+            <h3 data-ar="خدمات إدارية" data-en="Administrative Services">خدمات إدارية</h3>
+            <span class="category-hint mono" data-ar="مرّر الفأرة لعرض الخدمات ↓" data-en="Hover to view services ↓">مرّر الفأرة لعرض الخدمات ↓</span>
           </div>
         </div>
         <ul class="category-list">
-          <li><i class="fa-solid fa-chart-line"></i><span>استشارات إدارية</span></li>
-          <li><i class="fa-solid fa-magnifying-glass-chart"></i><span>دراسات الجدوى الفنية</span></li>
-          <li><i class="fa-solid fa-diagram-project"></i><span>إدارة المشاريع</span></li>
-          <li><i class="fa-solid fa-stamp"></i><span>التراخيص والاعتمادات</span></li>
+          <li><i class="fa-solid fa-chart-line"></i><span data-ar="استشارات إدارية" data-en="Management Consulting">استشارات إدارية</span></li>
+          <li><i class="fa-solid fa-magnifying-glass-chart"></i><span data-ar="دراسات الجدوى الفنية" data-en="Technical Feasibility Studies">دراسات الجدوى الفنية</span></li>
+          <li><i class="fa-solid fa-diagram-project"></i><span data-ar="إدارة المشاريع" data-en="Project Management">إدارة المشاريع</span></li>
+          <li><i class="fa-solid fa-stamp"></i><span data-ar="التراخيص والاعتمادات" data-en="Licensing &amp; Approvals">التراخيص والاعتمادات</span></li>
         </ul>
       </div>
 
@@ -1230,16 +1252,16 @@
           <i class="fa-solid fa-drafting-compass category-icon"></i>
           <div>
             <span class="idx mono">02</span>
-            <h3>خدمات هندسية</h3>
-            <span class="category-hint mono">مرّر الفأرة لعرض الخدمات ↓</span>
+            <h3 data-ar="خدمات هندسية" data-en="Engineering Services">خدمات هندسية</h3>
+            <span class="category-hint mono" data-ar="مرّر الفأرة لعرض الخدمات ↓" data-en="Hover to view services ↓">مرّر الفأرة لعرض الخدمات ↓</span>
           </div>
         </div>
         <ul class="category-list">
-          <li><i class="fa-solid fa-building"></i><span>التصميم المعماري</span></li>
-          <li><i class="fa-solid fa-ruler-combined"></i><span>التصميم المدني والإنشائي</span></li>
-          <li><i class="fa-solid fa-clipboard-check"></i><span>الإشراف الهندسي</span></li>
-          <li><i class="fa-solid fa-bolt"></i><span>الهندسة الكهربائية</span></li>
-          <li><i class="fa-solid fa-gears"></i><span>الهندسة الميكانيكية</span></li>
+          <li><i class="fa-solid fa-building"></i><span data-ar="التصميم المعماري" data-en="Architectural Design">التصميم المعماري</span></li>
+          <li><i class="fa-solid fa-ruler-combined"></i><span data-ar="التصميم المدني والإنشائي" data-en="Civil &amp; Structural Design">التصميم المدني والإنشائي</span></li>
+          <li><i class="fa-solid fa-clipboard-check"></i><span data-ar="الإشراف الهندسي" data-en="Engineering Supervision">الإشراف الهندسي</span></li>
+          <li><i class="fa-solid fa-bolt"></i><span data-ar="الهندسة الكهربائية" data-en="Electrical Engineering">الهندسة الكهربائية</span></li>
+          <li><i class="fa-solid fa-gears"></i><span data-ar="الهندسة الميكانيكية" data-en="Mechanical Engineering">الهندسة الميكانيكية</span></li>
         </ul>
       </div>
 
@@ -1247,17 +1269,17 @@
   </div>
 </section>
 
-<div class="dim-divider mono"><span class="tick"></span><span class="rule"></span><span class="label">03 — من مشاريعنا</span><span class="rule"></span><span class="tick"></span></div>
+<div class="dim-divider mono"><span class="tick"></span><span class="rule"></span><span class="label" data-ar="03 — من مشاريعنا" data-en="03 — Our Projects">03 — من مشاريعنا</span><span class="rule"></span><span class="tick"></span></div>
 
 <!-- ===== PROJECTS ===== -->
 <section id="projects" class="projects reveal">
   <div class="wrap">
     <div class="projects-head">
       <div>
-        <div class="eyebrow">أعمالنا</div>
-        <h2 class="section-title">من مشاريعنا</h2>
+        <div class="eyebrow" data-ar="أعمالنا" data-en="Our Work">بعض من أعمالنا</div>
+        <h2 class="section-title" data-ar="بعض من مشاريعنا" data-en="Our Projects">بعض من مشاريعنا</h2>
       </div>
-      <p>نماذج من مشاريع نفّذها المكتب في قطاعات مختلفة، تعكس تنوّع خبراتنا الهندسية ودقة التنفيذ.</p>
+      <p data-ar="نماذج من مشاريع نفّذها المكتب في قطاعات مختلفة، تعكس تنوّع خبراتنا الهندسية ودقة التنفيذ." data-en="Selected projects executed across different sectors, reflecting the diversity of our engineering expertise and precision in execution.">نماذج من مشاريع نفّذها المكتب في قطاعات مختلفة، تعكس تنوّع خبراتنا الهندسية ودقة التنفيذ.</p>
     </div>
     <div class="portfolio-filters" id="portfolioFilters">
       <button type="button" class="filter-btn active" data-filter="all">All</button>
@@ -1269,139 +1291,165 @@
     </div>
 
     <div class="portfolio-grid" id="portfolioGrid">
+<!-- ===== Bass Classic Resort ===== -->
+<div class="project-card" data-category="معماري">
+  <div class="project-thumb">
+    <span class="project-tag mono">Hospitality</span>
+    <img src="https://i.imgur.com/yaCp8d9.jpeg" alt="Bass Classic Resort" loading="lazy">
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Riyadh, KSA — 2022</div>
+    <h3>Bass Classic Resort</h3>
+    <p>منتجع بأس الكلاسيكي بمساحة مباني 73,000 م² لشركة بأس العقارية. شملت الخدمات التطوير، التصميم المفهومي، السلامة، وتوثيق الإشراف والتنفيذ.</p>
+  </div>
+</div>
 
-      <!-- 01 -->
-      <div class="project-card" data-category="معماري">
-        <div class="project-thumb">
-          <span class="project-tag mono">Architecture</span>
-           <img src="https://i.imgur.com/yaCp8d9.jpeg" alt="فلة خاصة - تصميم معماري مودرن" loading="lazy">
+<!-- ===== Abaq Al Jazeera Factory ===== -->
+<div class="project-card" data-category="صناعي">
+  <div class="project-thumb">
+    <span class="project-tag mono">Industrial</span>
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Sudair, KSA — 2023</div>
+    <h3>Abaq Al Jazeera Factory</h3>
+    <p>مشروع مصنع عبق الجزيرة للمنتجات بمساحة مباني 19,000 م². شمل التصميم الأولي والنهائي، عقود التنفيذ، والإشراف الهندسي الميداني.</p>
+  </div>
+</div>
 
-          <span class="project-num mono"></span>
-        </div>
-        <div class="project-body">
-          <div class="meta">Riyadh, AlAmariyah — 2025</div>
-          <h3>Residential Villa</h3>
-          <p></p>
-        </div>
-      </div>
+<!-- ===== Nadec Distribution Center ===== -->
+<div class="project-card" data-category="صناعي">
+  <div class="project-thumb">
+    <span class="project-tag mono">Logistics</span>
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Riyadh, KSA — 2023</div>
+    <h3>Nadec Distribution Center</h3>
+    <p>مركز توزيع منتجات شركة نادك الوطنية للتنمية الزراعية بمساحة 9,800 م². شمل تقديم التصاميم التفصيلية ووثائق المنافسات والدعم الفني أثناء الإنشاء.</p>
+  </div>
+</div>
 
-      <!-- 02 -->
-      <div class="project-card" data-category="معماري">
-        <div class="project-thumb">
-          <span class="project-tag mono">Architecture</span>
-          <img src="https://i.imgur.com/u1QXEWV.jpeg" alt="فلة خاصة - تصميم معماري مودرن" loading="lazy">
+<!-- ===== Bed Quarter & Back Care ===== -->
+<div class="project-card" data-category="تجاري">
+  <div class="project-thumb">
+    <span class="project-tag mono">Retail</span>
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">View Mall, KSA — 2022</div>
+    <h3>Bed Quarter & Back Care</h3>
+    <p>تصميم معرض ركن السرير بمساحة 330 م² بـ View Mall، وشمل ذلك التصميم المفهومي، المخططات التنفيذية، واعتمادات إدارات المجمعات التجاري.</p>
+  </div>
+</div>
 
-          <span class="project-num mono"></span>
-        </div>
-        <div class="project-body">
-          <div class="meta">Riyadh — 2026</div>
-          <h3>WAREFA
-Villa</h3>
-          <p>Architectural Design 360 - 430 m</p>
-        </div>
-      </div>	
+<!-- ===== Starbucks Drive-Thru ===== -->
+<div class="project-card" data-category="تجاري">
+  <div class="project-thumb">
+    <span class="project-tag mono">Commercial</span>
+    <img src="https://pbs.twimg.com/media/FhnOkrMXoAEQhOt?format=jpg&name=large" alt="Starbucks Cafe" loading="lazy">
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Riyadh, KSA — 2022</div>
+    <h3>Starbucks Café Drive-Thru</h3>
+    <p>فرع ستاربكس خدمة السيارات بمساحة 900 م²، وشملت الخدمات التصميم المعماري والمخططات التفصيلية والإشراف الهندسي واستخراج تراخيص البلدية.</p>
+  </div>
+</div>
 
-      <!-- 03 -->
-      <div class="project-card" data-category="اشراف">
-        <div class="project-thumb">
-          <span class="project-tag mono">Supervision</span>
-          <img src="https://i.imgur.com/7vlz6UU.png" alt="مجمع المستودعات اللوجستية" loading="lazy">
+<!-- ===== Al Sheikh Fuel Station ===== -->
+<div class="project-card" data-category="تجاري">
+  <div class="project-thumb">
+    <span class="project-tag mono">Fuel Station</span>
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Riyadh, KSA — 2023</div>
+    <h3>Al Sheikh Fuel Station</h3>
+    <p>محطة خدمة وقود الشيخ ومرافقها وميني مارت بمساحة 1,600 م²، وتشمل مخططات الماستر بلان والتصميم المفهومي والرسومات التنفيذية.</p>
+  </div>
+</div>
 
-          <span class="project-num mono"></span>
-        </div>
-        <div class="project-body">
-          <div class="meta">Sudair Industrial City - 2025</div>
-          <h3>Bed Quarter Factory</h3>
-          <p>Supervision</p>
-        </div>
-      </div>
+<!-- ===== ADNOC Fuel Station ===== -->
+<div class="project-card" data-category="تجاري">
+  <div class="project-thumb">
+    <span class="project-tag mono">Fuel Station</span>
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Riyadh, KSA — 2023</div>
+    <h3>ADNOC Fuel Station</h3>
+    <p>محطة توزيع أدنوك للوقود والخدمات المتكاملة بمساحة 4,000 م²، وشملت أعمال الماستر بلان والتصميم المعماري والإنشائي والرسومات التنفيذية.</p>
+  </div>
+</div>
 
-      <!-- 04 -->
-      <div class="project-card" data-category="تجاري">
-        <div class="project-thumb">
-          <span class="project-tag mono">تجاري</span>
-          <img src="https://pbs.twimg.com/media/F4oqSE-XIAAc_9m.jpg" alt="محطة خدمة وتجزئة الوقود" loading="lazy">
+<!-- ===== Hatlan Fuel Station ===== -->
+<div class="project-card" data-category="تجاري">
+  <div class="project-thumb">
+    <span class="project-tag mono">Fuel Station</span>
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Riyadh, KSA — 2022</div>
+    <h3>Hatlan Fuel Station</h3>
+    <p>محطة حتلان لخدمات الوقود بمساحة 1,400 م²، وتتضمن الماستر بلان، الرسومات التنفيذية، الإشراف الهندسي واعتمادات البلدية.</p>
+  </div>
+</div>
 
-          <span class="project-num mono"></span>
-        </div>
-        <div class="project-body">
-          <div class="meta">الرياض — 2023</div>
-          <h3>محطة خدمة وتجزئة الوقود</h3>
-          <p>مجمع تجاري متعدد الاستخدامات، تولى تصميم وتطوير محطات الوقود والخدمات المتكاملة وفق أعلى معايير الجودة والاستغلال الأمثل للمساحات.</p>
-        </div>
-      </div>
+<!-- ===== Labour Housing Project ===== -->
+<div class="project-card" data-category="سكني">
+  <div class="project-thumb">
+    <span class="project-tag mono">Residential</span>
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Industrial City, Riyadh — 2021</div>
+    <h3>Labour Housing Complex</h3>
+    <p>مجمع السكن العمالي لمدينة الفوزان الصناعية بمساحة 3,000 م². شمل الماستر بلان والتصميم المعماري والإنشائي والإشراف الميداني على التنفيذ.</p>
+  </div>
+</div>
 
-      <!-- 05 -->
-      <div class="project-card" data-category="تجاري">
-        <div class="project-thumb">
-          <span class="project-tag mono">تجاري</span>
-          <img src="https://static.arrajol.com/styles/693x433/public/2021-04/%D9%85%D9%88%D9%82%D8%B9-%D9%85%D9%83%D8%AA%D8%A8%D8%A9-%D8%AC%D8%B1%D9%8A%D8%B1.jpg" alt="مكتبة جرير - مجمع تجاري" loading="lazy">
+<!-- ===== Bed Quarter Factory ===== -->
+<div class="project-card" data-category="صناعي">
+  <div class="project-thumb">
+    <span class="project-tag mono">Industrial</span>
+    <img src="https://i.imgur.com/7vlz6UU.png" alt="Bed Quarter Factory" loading="lazy">
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Sudair Industrial City — 2023</div>
+    <h3>Bed Quarter Furniture Factory</h3>
+    <p>مصنع ركن السرير للأثاث بشركة ماز القابضة بمساحة 50,000 م². يتضمن تخطيط الموقع العام (Master Plan)، المخططات التنفيذية، والإشراف الهندسي.</p>
+  </div>
+</div>
 
-          <span class="project-num mono"></span>
-        </div>
-        <div class="project-body">
-          <div class="meta">الرياض — الغدير</div>
-          <h3>مكتبة جرير</h3>
-          <p>مشروع هندسي متكامل لمجمع تجاري حديث، يشمل التصميم الإنشائي والمعماري للواجهات العريضة والتقسيمات الداخلية للمساحات المفتوحة، مع تخطيط مواقف السيارات والمداخل لخدمة العلامات التجارية الكبرى.</p>
-        </div>
-      </div>
+<!-- ===== Al Jamih Masjid ===== -->
+<div class="project-card" data-category="معماري">
+  <div class="project-thumb">
+    <span class="project-tag mono">Religious</span>
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Al Qassim Province, KSA</div>
+    <h3>Al Jamih Masjid</h3>
+    <p>تصميم جامع الجميح بالقصيم مستوحى من العمارة الإسلامية الحديثة بالنقوش والفسيفساء الهندسية والزخارف والمشربيات الخشبية.</p>
+  </div>
+</div>
 
-      <!-- 06 -->
-      <div class="project-card" data-category="تعليمي">
-        <div class="project-thumb">
-          <span class="project-tag mono">تعليمي</span>
-          <img src="https://pbs.twimg.com/media/FhnOkrMXoAEQhOt?format=jpg&name=large" alt="إشراف هندسي على فرع ستاربكس حي الروضة" loading="lazy">
-
-          <span class="project-num mono"></span>
-        </div>
-        <div class="project-body">
-          <div class="meta">الرياض</div>
-          <h3>إشراف هندسي على فرع ستاربكس حي الروضة</h3>
-          <p>الإشراف الهندسي الميداني على أعمال تنفيذ وتجهيز فرع ستاربكس (خدمة السيارات)، لضمان أعلى معايير الجودة ومطابقة المواصفات المعتمدة.</p>
-        </div>
-      </div>
-
-      <!-- 07 -->
-      <div class="project-card" data-category="إداري">
-        <div class="project-thumb">
-          <span class="project-tag mono">إداري</span>
-
-          <span class="project-num mono"></span>
-        </div>
-        <div class="project-body">
-          <div class="meta">الرياض — 2022</div>
-          <h3>مبنى المكاتب الإدارية</h3>
-          <p>تصميم وإشراف هندسي على مبنى إداري متعدد الطوابق، شمل التخطيط الداخلي للمساحات المكتبية ومرافق الخدمات.</p>
-        </div>
-      </div>
-
-      <!-- 08 -->
-      <div class="project-card" data-category="صناعي">
-        <div class="project-thumb">
-          <span class="project-tag mono">صناعي</span>
-         
-          <span class="project-num mono"></span>
-        </div>
-        <div class="project-body">
-          <div class="meta">جدة — 2021</div>
-          <h3>محطة تحويل كهرباء فرعية</h3>
-          <p>تصميم إنشائي ومدني لمحطة تحويل كهربائية، مع مراعاة اشتراطات السلامة والتشغيل الفني الدقيقة.</p>
-        </div>
-      </div>
-
-      <!-- 09 -->
-      <div class="project-card" data-category="تعليمي">
-        <div class="project-thumb">
-          <span class="project-tag mono">تعليمي</span>
-
-          <span class="project-num mono"></span>
-        </div>
-        <div class="project-body">
-          <div class="meta">الدمام — 2020</div>
-          <h3>مركز التدريب المهني</h3>
-          <p>حرم تدريبي متكامل شمل التصميم المعماري والإشراف الهندسي على أعمال التنفيذ والتجهيزات الفنية.</p>
-        </div>
-      </div>
+<!-- ===== Residential Villas ===== -->
+<div class="project-card" data-category="معماري">
+  <div class="project-thumb">
+    <span class="project-tag mono">Architecture</span>
+    <img src="https://i.imgur.com/u1QXEWV.jpeg" alt="Residential Villas" loading="lazy">
+    <span class="project-num mono"></span>
+  </div>
+  <div class="project-body">
+    <div class="meta">Riyadh, KSA</div>
+    <h3>Private Residential Villas</h3>
+    <p>سلسلة تصاميم الفلل السكنية الفاخرة المودرن والكلاسيك (فيلا د. إبراهيم، فيلا الشهري، فيلا العقيل، فيلا الحربي) مع الإشراف والتراخيص.</p>
+  </div>
+</div>
 
     </div>
 
@@ -1413,7 +1461,7 @@ Villa</h3>
 <section id="accredited" class="accredited reveal">
   <div class="wrap">
     <div class="accredited-head">
-      <h2>معتمد من</h2>
+      <h2 data-ar="معتمد من" data-en="Accredited By">معتمد من</h2>
       <div class="underline"></div>
     </div>
     <div class="accredited-strip">
@@ -1449,8 +1497,8 @@ Villa</h3>
 <!-- ===== CTA BANNER ===== -->
 <section class="cta-banner">
   <div class="wrap">
-    <h2>هل تحتاج إلى مساعدة في مشروعك؟</h2>
-    <a href="#contact" class="btn btn-primary">ابق على تواصل</a>
+    <h2 data-ar="هل تحتاج إلى مساعدة في مشروعك؟" data-en="Need help with your project?">هل تحتاج إلى مساعدة في مشروعك؟</h2>
+    <a href="#contact" class="btn btn-primary" data-ar="ابق على تواصل" data-en="Get in Touch">ابق على تواصل</a>
   </div>
 </section>
 
@@ -1459,54 +1507,54 @@ Villa</h3>
 
   <div class="wrap contact-grid">
     <div class="contact-info">
-      <div class="eyebrow">تواصل معنا</div>
-      <h2>اطلب استشارتك الهندسية</h2>
-      <p>أخبرنا عن مشروعك وسيتواصل معك أحد مستشارينا الهندسيين خلال يومي عمل لمناقشة التفاصيل والخطوات القادمة.</p>
+      <div class="eyebrow" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</div>
+      <h2 data-ar="اطلب استشارتك الهندسية" data-en="Request Your Engineering Consultation">اطلب استشارتك الهندسية</h2>
+      <p data-ar="أخبرنا عن مشروعك وسيتواصل معك أحد مستشارينا الهندسيين خلال يومي عمل لمناقشة التفاصيل والخطوات القادمة." data-en="Tell us about your project and one of our engineering consultants will contact you within two business days to discuss the details and next steps.">أخبرنا عن مشروعك وسيتواصل معك أحد مستشارينا الهندسيين خلال يومي عمل لمناقشة التفاصيل والخطوات القادمة.</p>
       <div class="contact-list">
-        <div class="row"><span class="k mono">اتصال</span><span class="v">⁦+966 55 685 7938⁩</span></div>
-        <div class="row"><span class="k mono">البريد</span><span class="v">info@mazengineering.com</span></div>
-        <div class="row"><span class="k mono">الموقع</span><span class="v">Tarim Tower, شارع العليا، العليا، الرياض 12221</span></div>
-        <div class="row"><span class="k mono">الدوام</span><span class="v">الأحد – الخميس، 8 صباحاً – 5 مساءً</span></div>
+        <div class="row"><span class="k mono" data-ar="الهاتف" data-en="Phone">الهاتف</span><span class="v">+966 11 491 5733</span></div>
+        <div class="row"><span class="k mono" data-ar="البريد" data-en="Email">البريد</span><span class="v">info@mazengineering.com</span></div>
+        <div class="row"><span class="k mono" data-ar="الموقع" data-en="Location">الموقع</span><span class="v" data-ar="Tarim Tower, شارع العليا، العليا، الرياض 12221" data-en="Tarim Tower, Al Olaya St., Al Olaya, Riyadh 12221">Tarim Tower, شارع العليا، العليا، الرياض 12221</span></div>
+        <div class="row"><span class="k mono" data-ar="الدوام" data-en="Hours">الدوام</span><span class="v" data-ar="الأحد – الخميس، 8 صباحاً – 5 مساءً" data-en="Sunday – Thursday, 8 AM – 5 PM">الأحد – الخميس، 8 صباحاً – 5 مساءً</span></div>
       </div>
     </div>
 
     <form class="form-card" onsubmit="return handleSubmit(event)">
-      <div class="form-title mono">طلب استشارة</div>
+      <div class="form-title mono" data-ar="طلب استشارة" data-en="Consultation Request">طلب استشارة</div>
       <div class="form-row">
         <div class="field">
-          <label for="name">الاسم الكامل</label>
-          <input id="name" name="name" type="text" placeholder="اسمك" required>
+          <label for="name" data-ar="الاسم الكامل" data-en="Full Name">الاسم الكامل</label>
+          <input id="name" name="name" type="text" placeholder="اسمك" data-ar-placeholder="اسمك" data-en-placeholder="Your name" required>
         </div>
         <div class="field">
-          <label for="phone">رقم الجوال</label>
+          <label for="phone" data-ar="رقم الجوال" data-en="Phone Number">رقم الجوال</label>
           <input id="phone" name="phone" type="tel" placeholder="05xxxxxxxx" required>
         </div>
       </div>
       <div class="form-row">
         <div class="field">
-          <label for="email">البريد الإلكتروني</label>
+          <label for="email" data-ar="البريد الإلكتروني" data-en="Email Address">البريد الإلكتروني</label>
           <input id="email" name="email" type="email" placeholder="example@email.com" required>
         </div>
         <div class="field">
-          <label for="service">نوع الخدمة</label>
+          <label for="service" data-ar="نوع الخدمة" data-en="Service Type">نوع الخدمة</label>
           <select id="service" name="service">
-            <option>التصميم الإنشائي</option>
-            <option>التصميم المعماري</option>
-            <option>الإشراف الهندسي</option>
-            <option>دراسات الجدوى الفنية</option>
-            <option>إدارة المشاريع</option>
-            <option>الاستشارات والتراخيص</option>
+            <option data-ar="التصميم الإنشائي" data-en="Structural Design">التصميم الإنشائي</option>
+            <option data-ar="التصميم المعماري" data-en="Architectural Design">التصميم المعماري</option>
+            <option data-ar="الإشراف الهندسي" data-en="Engineering Supervision">الإشراف الهندسي</option>
+            <option data-ar="دراسات الجدوى الفنية" data-en="Technical Feasibility Studies">دراسات الجدوى الفنية</option>
+            <option data-ar="إدارة المشاريع" data-en="Project Management">إدارة المشاريع</option>
+            <option data-ar="الاستشارات والتراخيص" data-en="Consulting &amp; Licensing">الاستشارات والتراخيص</option>
           </select>
         </div>
       </div>
       <div class="form-row">
         <div class="field full">
-          <label for="message">تفاصيل المشروع</label>
-          <textarea id="message" name="message" placeholder="اكتب نبذة مختصرة عن مشروعك واحتياجك الهندسي..."></textarea>
+          <label for="message" data-ar="تفاصيل المشروع" data-en="Project Details">تفاصيل المشروع</label>
+          <textarea id="message" name="message" placeholder="اكتب نبذة مختصرة عن مشروعك واحتياجك الهندسي..." data-ar-placeholder="اكتب نبذة مختصرة عن مشروعك واحتياجك الهندسي..." data-en-placeholder="Write a brief summary of your project and engineering needs..."></textarea>
         </div>
       </div>
-      <button type="submit" class="submit-btn">إرسال طلب الاستشارة</button>
-      <div class="form-note" id="formNote">سيتم التواصل معك خلال يومي عمل من فريقنا الهندسي.</div>
+      <button type="submit" class="submit-btn" data-ar="إرسال طلب الاستشارة" data-en="Submit Consultation Request">إرسال طلب الاستشارة</button>
+      <div class="form-note" id="formNote" data-ar="سيتم التواصل معك خلال يومي عمل من فريقنا الهندسي." data-en="Our engineering team will contact you within two business days.">سيتم التواصل معك خلال يومي عمل من فريقنا الهندسي.</div>
     </form>
   </div>
   <div class="wrap">
@@ -1518,16 +1566,18 @@ Villa</h3>
 
 <footer>
   <div class="wrap foot-inner">
-    <span>© 2026 ماز الهندسية — MAZ Engineering. جميع الحقوق محفوظة.</span>
+    <span data-ar="© 2026 ماز الهندسية — MAZ Engineering. جميع الحقوق محفوظة." data-en="© 2026 MAZ Engineering. All rights reserved.">© 2026 ماز الهندسية — MAZ Engineering. جميع الحقوق محفوظة.</span>
     <span class="mono">MAZ ENGINEERING CONSULTANTS</span>
   </div>
 </footer>
 
 <script>
+  var currentLang = 'ar';
+  var successMsg = { ar: 'تم استلام طلبك بنجاح، سنتواصل معك قريباً. شكراً لك.', en: 'Your request has been received. We will contact you soon. Thank you.' };
   function handleSubmit(e){
     e.preventDefault();
     const note = document.getElementById('formNote');
-    note.textContent = 'تم استلام طلبك بنجاح، سنتواصل معك قريباً. شكراً لك.';
+    note.textContent = successMsg[currentLang];
     note.style.color = '#AD8A52';
     e.target.reset();
     return false;
@@ -1578,6 +1628,42 @@ Villa</h3>
         });
       });
     });
+  })();
+
+  // ===== language toggle (AR / EN) =====
+  (function(){
+    const toggleBtn = document.getElementById('langToggle');
+    const toggleLabel = document.getElementById('langToggleLabel');
+    if(!toggleBtn) return;
+
+    function applyLang(lang){
+      currentLang = lang;
+      document.documentElement.setAttribute('lang', lang === 'ar' ? 'ar' : 'en');
+      document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+      toggleLabel.textContent = lang === 'ar' ? 'EN' : 'AR';
+
+      // plain text swaps
+      document.querySelectorAll('[data-ar][data-en]').forEach(el=>{
+        el.textContent = lang === 'ar' ? el.getAttribute('data-ar') : el.getAttribute('data-en');
+      });
+
+      // html swaps (elements containing nested tags like <span>)
+      document.querySelectorAll('[data-ar-html][data-en-html]').forEach(el=>{
+        el.innerHTML = lang === 'ar' ? el.getAttribute('data-ar-html') : el.getAttribute('data-en-html');
+      });
+
+      // placeholder swaps
+      document.querySelectorAll('[data-ar-placeholder][data-en-placeholder]').forEach(el=>{
+        el.setAttribute('placeholder', lang === 'ar' ? el.getAttribute('data-ar-placeholder') : el.getAttribute('data-en-placeholder'));
+      });
+    }
+
+    toggleBtn.addEventListener('click', ()=>{
+      applyLang(currentLang === 'ar' ? 'en' : 'ar');
+    });
+
+    // initialize label to reflect default (Arabic) state
+    applyLang('ar');
   })();
 
 </script>
